@@ -1,0 +1,44 @@
+focus_id,focus_designation,epizootic_activity,main_host,main_vectors,country
+1,Central Caucasian,Constant,Citellus musicus,Citellophillus tesquorom,Russia
+4,Transcaucasian highland (Leninakan),Constant,Microtus arvalis,"Callopsylla caspia, Nosopsyllus consimilis","Armenia, Georgia"
+5,Transcaucasian highland (Pre-Sevan),Constant,Microtus arvalis,"C. caspia, N. consimilis","Armenia, Azerbaijan"
+6,Transcaucasian highland (Zanzegur-Karabakh),Constant,Microtus arvalis,"C. caspia, N. consimilis","Armenia, Azerbaijan"
+7,Pre-Araks,Recurring,Meriones vinogradov,Xenopsylla conformis,"Armenia, Azerbaijan"
+8,Bozchel,Recurring,Meriones libicus,"X. conformis, Nosopsyllus laeviceps",Azerbaijan
+9,Kobystan,Recurring,Meriones libicus,"X. conformis, N. laeviceps",Azerbaijan
+10,Mila-Karabakh,Recurring,Meriones libicus,"X. conformis, N. laeviceps",Azerbaijan
+11,Dzheiranchel,Recurring,Meriones libicus,"X. conformis, N. laeviceps",Azerbaijan
+12,Gyanzha-Kazakh,Recurring,Meriones libicus,"X. conformis, N. laeviceps",Azerbaijan
+13,Iori,Recurring,Meriones libicus,"X. conformis, N. laeviceps","Azerbaijan, Georgia"
+39,Dagestan-highland,Recurring,Microtus arvalis,C. caspia,Russia North Pre-Caspian region
+2,Terek-Sunzha,Recurring,Citellus pygmaeus,"Neopsylla setosa, C. tesquorum",Russia
+3,Dagestan plain foothill,Recurring,Citellus pygmaeus,"N. setosa, C. tesquorum",Russia
+14,Pre-Caspian northwestern,Recurring,Citellus pygmaeus,"N. setosa, C. tesquorum",Russia
+15,Volga-Ural steppe,Recurring,Citellus pygmaeus,"N. setosa, C. tesquorum",Russia
+17,Trans-Ural,Recurring,Citellus pygmaeus,"N. setosa, C. tesquorum","Russia, Kazakhstan"
+43,Pre-Caspian sandy,Recurring,Meriones meridianus,N. laeviceps,Russia
+16,Volga-Ural sandy,Recurring,Meriones meridianus,"X. conformis, N. laeviceps",Russia Central Asian Desert region
+18,Ural-Emba,Constant,Rhombomys opimus,X. skrjabini,Kazakhstan
+19,Pre-Ustyurt,Constant,Rhombomys opimus,X. skrjabini,Kazakhstan
+20,Ustyurt,Recurring,Rhombomys opimus,X. skrjabini,"Kazakhstan, Uzbekistan"
+21,North-Pre-Aral,Recurring,Rhombomys opimus,X. skrjabini,"Kazakhstan, Uzbekistan"
+22,Trans-Aral,Recurring,Rhombomys opimus,X. skrjabini,Kazakhstan
+23,Mangyshlak,Recurring,Rhombomys opimus,X. skrjabini,Kazakhstan
+24,Pre-Aral-Kara-Kum,Constant,Rhombomys opimus,X. skrjabini,Kazakhstan
+25,Kara-Kum,Recurring,Rhombomys opimus,X. gerbilli,Turkmenistan
+26,Kopet-Dag,Recurring,Rhombomys opimus,X. gerbilli,Turkmenistan
+27,Kyzyl-Kum,Recurring,Rhombomys opimus,X. gerbilli,"Uzbekistan, Kazakhstan"
+28,Muyun-Kum,Recurring,Rhombomys opimus,X. gerbilli,Kazakhstan
+29,Tau-Kum,Recurring,Rhombomys opimus,X. gerbilli,Kazakhstan
+30,Pre-Balkhash,Recurring,Rhombomys opimus,X. gerbilli,Kazakhstan
+42,Betpak-Dala,Recurring,Rhombomys opimus,X. gerbilli,Kazakhstan Central Asian Mountain region
+31,Sarydzhaz,Recurring,Marmota baibacina,Oropsylla silantiewi,Kirghizia
+32,Upper-Naryn,Recurring,Marmota baibacina,O. silantiewi,Kirghizia
+33,Aksai,Recurring,Marmota baibacina,O. silantiewi,Kirghizia
+34,Gissar,Recurring,Microtus carruthersi,"C. caspia, Amphipsylla phaiomydis, Frontopsylla elata, N. pleskei","Tadjikistan, Uzbekistan"
+35,Alai,Recurring,Marmota caudata,O. silantiewi,Kirghizia
+40,Talas,Recurring,Microtus gregalisc,C. caspia,Kirghizia Siberian region
+36,Mountain-Altai,Recurring,Ochotona pricei,Paradoxopsyllus scorodumovi,Russia
+37,Tuva (Mongun-Taigin),Recurring,Citellus undulatus,C. tesquorum,Russia
+41,Tuva (Sagly),Recurring,Citellus undulatus,C. tesquorum,Russia
+38,Trans-Baikal,Recurring,Citellus dauricus,C. tesquorum,Russia

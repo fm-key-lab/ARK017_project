@@ -1,0 +1,277 @@
+﻿Andrades 2022 SOM Table 2;;;;;;;;;;
+;;;;;;;;;;
+Altenerding (AE1175);Ancient;ENA;PRJEB14851;Feldman et al. 2016;AE1175;Strain;Ancient/Modern;Database;Accession Number;Publication
+Barcelona;Ancient;ENA;PRJEB13664;Spyrou et al. (2016);Barcelona3031;Gok2;Ancient;ENA;ERS434180;Rascovan et al. (2018)
+BED024.A0102_8052_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);BED024.A_8052;RV2039;Ancient;ENA;ERS6638365;Susat et al. (2021)
+BED028.A0102_8103_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);BED028.A_8103;GZL002.A0101_02.YP2.1;Ancient;ENA;ERS4540521;Yu et al. (2020)
+BED030.A0102_8127_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);BED030.A_8127;GZL001.A0101_02.YP2.1;Ancient;ENA;ERS4540520;Yu et al. (2020)
+BED034.A0102_8198_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);BED034.A_8198;STN019.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+Bolgar;Ancient;ENA;PRJEB13664;Spyrou et al. (2016);BolgarCity2370;BED028.A0102_8103_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+BRA001.A0101_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);BRA001.A;NMS002.A0101.combined;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+EDI001.A_shotgun;Ancient;ENA;PRJEB29991;Keller et al. (2019);EDI001.A;STN002.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+Ellwangen;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);Ellwangen549_O_c;Ellwangen;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+GEN72;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017);GEN72;BED030.A0102_8127_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+Gok2;Ancient;ENA;ERS434180;Rascovan et al. (2018);Gökhem2;BED024.A0102_8052_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+Gyvakarai1;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017);Gyvakarai1;STN020.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+GZL001.A0101_02.YP2.1;Ancient;ENA;ERS4540520;Yu et al. (2020);GLZ001.A;STN021.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+GZL002.A0101_02.YP2.1;Ancient;ENA;ERS4540521;Yu et al. (2020);GLZ002.A;STA001.A0101_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+HUT004.A_1343UnTal85;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017);1343UnTal85;LAI009.A0101_RT88_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+KunilaII;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017);KunilaII;BED034.A0102_8198_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+LAI009.A0101_RT88_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);LAI009.A_RT88;STN014.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+London_EastSmithfield_8124_8291_11972;Ancient;SRA;SRS259945;Bos et al. (2011);individual 8291;BRA001.A0101_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+London_EastSmithfield_8124_8291_11972;Ancient;SRA;SRS259946,SRS259946;Bos et al. (2011);individual 11972;STN008.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+MAN008.B0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);MAN008.B;STN007.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+MIK005.A_RT5;Ancient;ENA;PRJEB24296;Spyrou et al. (2018);RT5;MAN008.B0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019)
+NMS002.A0101.combined;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);NMS002.A;EDI001.A_shotgun;Ancient;ENA;PRJEB29991;Keller et al. (2019)
+OBS107;Ancient;ENA;PRJEB12163;Bos et al. (2016);OBS107;Altenerding (AE1175);Ancient;ENA;PRJEB14851;Feldman et al. 2016
+OBS110;Ancient;ENA;PRJEB12163;Bos et al. (2016);OBS110;London_EastSmithfield_8124_8291_11972;Ancient;SRA;SRS259946,SRS259946,SRS259945;Bos et al. (2011)
+OBS116;Ancient;ENA;PRJEB12163;Bos et al. (2016);OBS116;Bolgar;Ancient;ENA;PRJEB13664;Spyrou et al. (2016)
+OBS124;Ancient;ENA;PRJEB12163;Bos et al. (2016);OBS124;Barcelona;Ancient;ENA;PRJEB13664;Spyrou et al. (2016)
+OBS137;Ancient;ENA;PRJEB12163;Bos et al. (2016);OBS137;OBS124;Ancient;ENA;PRJEB12163;Bos et al. (2016)
+PST006.A_Post6;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017);Post6;OBS107;Ancient;ENA;PRJEB12163;Bos et al. (2016)
+RISE505;Ancient;ENA;PRJEB10885;Rasmussen et al. (2015);RISE505-Metagenome;OBS116;Ancient;ENA;PRJEB12163;Bos et al. (2016)
+RISE509;Ancient;ENA;PRJEB10885;Rasmussen et al. (2015);RISE509-Metagenome;OBS137;Ancient;ENA;PRJEB12163;Bos et al. (2016)
+RK1001.C;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017);RK1001;OBS110;Ancient;ENA;PRJEB12163;Bos et al. (2016)
+RV2039;Ancient;ENA;ERS6638365;Susat et al. (2021);RV20391;MIK005.A_RT5;Ancient;ENA;PRJEB24296;Spyrou et al. (2018)
+STA001.A0101_PE_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);STA001.A;GEN72;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017)
+STN002.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);STN002.A;Gyvakarai1;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017)
+STN007.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);STN007.A;PST006.A_Post6;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017)
+STN008.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);STN008.A;HUT004.A_1343UnTal85;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017)
+STN014.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);STN014.A;RK1001.C;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017)
+STN019.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);STN019.A;KunilaII;Ancient;ENA;PRJEB19335;Andrades Valtueña et al. (2017)
+STN020.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);STN020.A;RISE509;Ancient;ENA;PRJEB10885;Rasmussen et al. (2015)
+STN021.A0101_SE;Ancient;ENA;PRJEB29990;Spyrou et al. (2019);STN021.A;RISE505;Ancient;ENA;PRJEB10885;Rasmussen et al. (2015)
+0.ANT2_B42003004;Modern;Genbank;NZ_AAYU00000000;Eppinger et al. (2009);;;;;;
+0.PE2_PEST.F;Modern;Genbank;NC_009381;Garcia et al. (2007);;;;;;
+0.PE4_Microtus91001;Modern;Genbank;NC_005810;Song et al. (2004);;;;;;
+0.PE4Ba_PestoidesA;Modern;Genbank;NZ_ACNT01000001;Plunkett et al (2009);;;;;;
+1.ANT1_UG05.0454;Modern;Genbank;NZ_AAYR00000000;Morelli et al. (2010);;;;;;
+1.ORI1_CA88;Modern;Genbank;NZ_ABCD00000000;Auerbach et al. (2007);;;;;;
+1.ORI1_CO92;Modern;Genbank;NC_003143;Parkhill et al. (2001);;;;;;
+1.ORI1b_India195;Modern;Genbank;NZ_ACNR01000001.;Plunkett et al (2009);;;;;;
+1.ORI2_F1991016;Modern;Genbank;NZ_ABAT00000000;Eppinger et al. (2009);;;;;;
+1.ORI3_IP275;Modern;Genbank;NZ_AAOS00000000;Morelli et al. (2010);;;;;;
+1.ORI3_MG05.1020;Modern;Genbank;NZ_AAYS00000000;Morelli et al. (2010);;;;;;
+2.ANT1_Nepal516;Modern;Genbank;NC_008149;Chain et al. (2006);;;;;;
+2.MED1_K1973002;Modern;Genbank;NZ_AAYT00000000;Cui et al. (2013);;;;;;
+2.MED1_KIM10;Modern;Genbank;NC_004088;Deng et al. (2002);;;;;;
+Y. pseudotuberculosis IP32953;Modern;Genbank;NC_006155;Chain et al. (2004);;;;;;
+0.ANT1a_42013;Modern;SRA;SRR069110;Cui et al. (2013);;;;;;
+0.ANT1b_CMCC49003;Modern;SRA;SRR069167;Cui et al. (2013);;;;;;
+0.ANT1c_945;Modern;SRA;SRR069132;Cui et al. (2013);;;;;;
+0.ANT1d_164;Modern;SRA;SRR069096;Cui et al. (2013);;;;;;
+0.ANT1e_CMCC8211;Modern;SRA;SRR069176;Cui et al. (2013);;;;;;
+0.ANT1f_42095;Modern;SRA;SRR069114;Cui et al. (2013);;;;;;
+0.ANT1g_CMCC42007;Modern;SRA;SRR069163;Cui et al. (2013);;;;;;
+0.ANT1h_CMCC43032;Modern;SRA;SRR069164;Cui et al. (2013);;;;;;
+0.ANT2a_2330;Modern;SRA;SRR069098;Cui et al. (2013);;;;;;
+0.ANT3a_CMCC38001;Modern;SRA;SRR069161;Cui et al. (2013);;;;;;
+0.ANT3b_A1956001;Modern;SRA;SRR069162;Cui et al. (2013);;;;;;
+0.ANT3c_42082;Modern;SRA;SRR069111;Cui et al. (2013);;;;;;
+0.ANT3d_CMCC21106;Modern;SRA;SRR069156;Cui et al. (2013);;;;;;
+0.ANT3e_42091b;Modern;SRA;SRR069113;Cui et al. (2013);;;;;;
+0.PE2b_G8786;Modern;SRA;SRR069198;Cui et al. (2013);;;;;;
+0.PE4_M0000002;Modern;SRA;SRR069196;Cui et al. (2013);;;;;;
+0.PE4Aa_12;Modern;SRA;SRR069094;Cui et al. (2013);;;;;;
+0.PE4Ab_9;Modern;SRA;SRR069129;Cui et al. (2013);;;;;;
+0.PE4Ca_CMCCN010025;Modern;SRA;SRR069195;Cui et al. (2013);;;;;;
+0.PE4Cc_CMCC18019;Modern;SRA;SRR069155;Cui et al. (2013);;;;;;
+0.PE4Cd_CMCC93014;Modern;SRA;SRR069187;Cui et al. (2013);;;;;;
+0.PE4Ce_CMCC91090;Modern;SRA;SRR069184;Cui et al. (2013);;;;;;
+0.PE7b_620024;Modern;SRA;SRR069117;Cui et al. (2013);;;;;;
+1.ANT1_Antiqua;Modern;GenBank;NC_008150;Cui et al. (2013);;;;;;
+1.IN1a_CMCC11001;Modern;SRA;SRR069142;Cui et al. (2013);;;;;;
+1.IN1b_780441;Modern;SRA;SRR069126;Cui et al. (2013);;;;;;
+1.IN1c_K21985002;Modern;SRA;SRR069165;Cui et al. (2013);;;;;;
+1.IN2a_CMCC640047;Modern;SRA;SRR069171;Cui et al. (2013);;;;;;
+1.IN2b_30017;Modern;SRA;SRR069102;Cui et al. (2013);;;;;;
+1.IN2c_CMCC31004;Modern;SRA;SRR069158;Cui et al. (2013);;;;;;
+1.IN2d_C1975003;Modern;SRA;SRR069153;Cui et al. (2013);;;;;;
+1.IN2e_C1989001;Modern;SRA;SRR069128;Cui et al. (2013);;;;;;
+1.IN2f_710317;Modern;SRA;SRR069121;Cui et al. (2013);;;;;;
+1.IN2g_CMCC05013;Modern;SRA;SRR069137;Cui et al. (2013);;;;;;
+1.IN2h_5;Modern;SRA;SRR069116;Cui et al. (2013);;;;;;
+1.IN2i_CMCC10012;Modern;SRA;SRR069138;Cui et al. (2013);;;;;;
+1.IN2j_CMCC27002;Modern;SRA;SRR069157;Cui et al. (2013);;;;;;
+1.IN2k_970754;Modern;SRA;SRR069133;Cui et al. (2013);;;;;;
+1.IN2l_D1991004;Modern;SRA;SRR069131;Cui et al. (2013);;;;;;
+1.IN2m_D1964002b;Modern;SRA;SRR069148;Cui et al. (2013);;;;;;
+1.IN2n_CMCC02041;Modern;SRA;SRR069134;Cui et al. (2013);;;;;;
+1.IN2o_CMCC03001;Modern;SRA;SRR069135;Cui et al. (2013);;;;;;
+1.IN2p_D1982001;Modern;SRA;SRR069123;Cui et al. (2013);;;;;;
+1.IN2q_D1964001;Modern;SRA;SRR069118;Cui et al. (2013);;;;;;
+1.IN3a_F1954001;Modern;SRA;SRR069127;Cui et al. (2013);;;;;;
+1.IN3b_E1979001;Modern;SRA;SRR069216;Cui et al. (2013);;;;;;
+1.IN3c_CMCC84038b;Modern;SRA;SRR069180;Cui et al. (2013);;;;;;
+1.IN3d_YN1683;Modern;SRA;SRR069209;Cui et al. (2013);;;;;;
+1.IN3e_YN472;Modern;SRA;SRR069214;Cui et al. (2013);;;;;;
+1.IN3f_YN1065;Modern;SRA;SRR069208;Cui et al. (2013);;;;;;
+1.IN3g_E1977001;Modern;SRA;SRR069177;Cui et al. (2013);;;;;;
+1.IN3h_CMCC84033;Modern;SRA;SRR069178;Cui et al. (2013);;;;;;
+1.IN3i_CMCC84046;Modern;SRA;SRR069181;Cui et al. (2013);;;;;;
+1.ORI1a_CMCC114001;Modern;SRA;SRR069144;Cui et al. (2013);;;;;;
+1.ORI1c_F1946001;Modern;SRA;SRR069143;Cui et al. (2013);;;;;;
+1.ORI2a_YN2179;Modern;SRA;SRR069210;Cui et al. (2013);;;;;;
+1.ORI2c_YN2551b;Modern;SRA;SRR069212;Cui et al. (2013);;;;;;
+1.ORI2d_YN2588;Modern;SRA;SRR069213;Cui et al. (2013);;;;;;
+1.ORI2f_CMCC87001;Modern;SRA;SRR069182;Cui et al. (2013);;;;;;
+1.ORI2g_F1984001;Modern;SRA;SRR069175;Cui et al. (2013);;;;;;
+1.ORI2h_YN663;Modern;SRA;SRR069215;Cui et al. (2013);;;;;;
+1.ORI2i_CMCCK100001a;Modern;SRA;SRR069193;Cui et al. (2013);;;;;;
+1.ORI2i_CMCCK110001b;Modern;SRA;SRR069194;Cui et al. (2013);;;;;;
+1.ORI3a_EV76;Modern;SRA;SRR069197;Cui et al. (2013);;;;;;
+2.ANT1a_34008;Modern;SRA;SRR069104;Cui et al. (2013);;;;;;
+2.ANT1b_34202;Modern;SRA;SRR069105;Cui et al. (2013);;;;;;
+2.ANT2a_2;Modern;SRA;SRR069097;Cui et al. (2013);;;;;;
+2.ANT2b_351001;Modern;SRA;SRR069106;Cui et al. (2013);;;;;;
+2.ANT2c_CMCC347001;Modern;SRA;SRR069159;Cui et al. (2013);;;;;;
+2.ANT2d_G1996006;Modern;SRA;SRR069108;Cui et al. (2013);;;;;;
+2.ANT2e_G1996010;Modern;SRA;SRR069107;Cui et al. (2013);;;;;;
+2.ANT2f_CMCC348002;Modern;SRA;SRR069160;Cui et al. (2013);;;;;;
+2.ANT3a_CMCC92010;Modern;SRA;SRR069186;Cui et al. (2013);;;;;;
+2.ANT3b_CMCC95001;Modern;SRA;SRR069188;Cui et al. (2013);;;;;;
+2.ANT3c_CMCC96001;Modern;SRA;SRR069189;Cui et al. (2013);;;;;;
+2.ANT3d_CMCC96007;Modern;SRA;SRR069190;Cui et al. (2013);;;;;;
+2.ANT3e_CMCC67001;Modern;SRA;SRR069172;Cui et al. (2013);;;;;;
+2.ANT3f_CMCC104003;Modern;SRA;SRR069139;Cui et al. (2013);;;;;;
+2.ANT3g_CMCC51020;Modern;SRA;SRR069168;Cui et al. (2013);;;;;;
+2.ANT3h_CMCC106002;Modern;SRA;SRR069140;Cui et al. (2013);;;;;;
+2.ANT3i_CMCC64001;Modern;SRA;SRR069170;Cui et al. (2013);;;;;;
+2.ANT3j_H1959004;Modern;SRA;SRR069115;Cui et al. (2013);;;;;;
+2.ANT3k_5761;Modern;SRA;SRR069095;Cui et al. (2013);;;;;;
+2.ANT3l_735;Modern;SRA;SRR069103;Cui et al. (2013);;;;;;
+2.MED1b_2506;Modern;SRA;SRR069100;Cui et al. (2013);;;;;;
+2.MED1c_2654;Modern;SRA;SRR069101;Cui et al. (2013);;;;;;
+2.MED1d_2504;Modern;SRA;SRR069099;Cui et al. (2013);;;;;;
+2.MED2b_91;Modern;SRA;SRR069130;Cui et al. (2013);;;;;;
+2.MED2c_K11973002;Modern;SRA;SRR069166;Cui et al. (2013);;;;;;
+2.MED2d_A1973001;Modern;SRA;SRR069109;Cui et al. (2013);;;;;;
+2.MED2e_7338;Modern;SRA;SRR069122;Cui et al. (2013);;;;;;
+2.MED3a_J1963002;Modern;SRA;SRR069174;Cui et al. (2013);;;;;;
+2.MED3b_CMCC125002b;Modern;SRA;SRR069151;Cui et al. (2013);;;;;;
+2.MED3c_I1969003;Modern;SRA;SRR069152;Cui et al. (2013);;;;;;
+2.MED3d_J1978002;Modern;SRA;SRR069149;Cui et al. (2013);;;;;;
+2.MED3f_I1970005;Modern;SRA;SRR069191;Cui et al. (2013);;;;;;
+2.MED3g_CMCC99103;Modern;SRA;SRR069192;Cui et al. (2013);;;;;;
+2.MED3h_CMCC90027;Modern;SRA;SRR069183;Cui et al. (2013);;;;;;
+2.MED3i_CMCC92004;Modern;SRA;SRR069185;Cui et al. (2013);;;;;;
+2.MED3j_I2001001;Modern;SRA;SRR069154;Cui et al. (2013);;;;;;
+2.MED3k_CMCC12003;Modern;SRA;SRR069145;Cui et al. (2013);;;;;;
+2.MED3l_I1994006;Modern;SRA;SRR069146;Cui et al. (2013);;;;;;
+2.MED3m_SHAN11;Modern;SRA;SRR069206;Cui et al. (2013);;;;;;
+2.MED3n_SHAN12;Modern;SRA;SRR069207;Cui et al. (2013);;;;;;
+2.MED3o_I1991001;Modern;SRA;SRR069093;Cui et al. (2013);;;;;;
+2.MED3p_CMCC107004;Modern;SRA;SRR069141;Cui et al. (2013);;;;;;
+3.ANT1a_7b;Modern;SRA;SRR069125;Cui et al. (2013);;;;;;
+3.ANT1b_CMCC71001;Modern;SRA;SRR069173;Cui et al. (2013);;;;;;
+3.ANT1c_C1976001;Modern;SRA;SRR069119;Cui et al. (2013);;;;;;
+3.ANT1d_71021;Modern;SRA;SRR069120;Cui et al. (2013);;;;;;
+3.ANT2a_MGJZ6;Modern;SRA;SRR069203;Cui et al. (2013);;;;;;
+3.ANT2b_MGJZ7;Modern;SRA;SRR069204;Cui et al. (2013);;;;;;
+3.ANT2c_MGJZ9;Modern;SRA;SRR069205;Cui et al. (2013);;;;;;
+3.ANT2d_MGJZ11;Modern;SRA;SRR069200;Cui et al. (2013);;;;;;
+3.ANT2e_MGJZ3;Modern;SRA;SRR069202;Cui et al. (2013);;;;;;
+4.ANT1a_MGJZ12;Modern;SRA;SRR069201;Cui et al. (2013);;;;;;
+0.PE4_A.1804;Modern;SRA;SRR2124154, SRR2124155;Kislichkina et al. (2015);;;;;;
+0.PE4_5307.Gis;Modern;SRA;SRR2094296;Kislichkina et al. (2015);;;;;;
+0.PE2_C.359;Modern;SRA;SRR2124169, SRR2124170;Kislichkina et al. (2015);;;;;;
+0.PE2_C.590;Modern;SRA;SRR2094294;Kislichkina et al. (2015);;;;;;
+0.PE2_C.666;Modern;SRA;SRR2124207;Kislichkina et al. (2015);;;;;;
+0.PE4_I.3134;Modern;SRA;SRR2094295;Kislichkina et al. (2015);;;;;;
+0.PE2_C.291;Modern;SRA;SRR2124185;Kislichkina et al. (2015);;;;;;
+0.PE5_I.3189;Modern;SRA;SRR2093957;Kislichkina et al. (2015);;;;;;
+0.PE2_C.267;Modern;SRA;SRR2124165, SRR2124167;Kislichkina et al. (2015);;;;;;
+0.PE2_C.537;Modern;SRA;SRR2094286, SRR2094287;Kislichkina et al. (2015);;;;;;
+0.PE4_A.1807;Modern;SRA;SRR2094300;Kislichkina et al. (2015);;;;;;
+0.PE2_C.197;Modern;SRA;SRR2124156, SRR2124157;Kislichkina et al. (2015);;;;;;
+0.PE4_A.513;Modern;SRA;SRR2124168;Kislichkina et al. (2015);;;;;;
+0.PE2_C.290;Modern;SRA;SRR2094306;Kislichkina et al. (2015);;;;;;
+0.PE5_I.2422a;Modern;SRA;SRR2124208;Kislichkina et al. (2015);;;;;;
+0.PE2_C.346;Modern;SRA;SRR2124186;Kislichkina et al. (2015);;;;;;
+0.PE5_I.2239;Modern;SRA;SRR2511857;Kislichkina et al. (2015);;;;;;
+0.PE2_C.235;Modern;SRA;SRR2124162, SRR2124163;Kislichkina et al. (2015);;;;;;
+0.PE4_I.3455;Modern;SRA;SRR2094311;Kislichkina et al. (2015);;;;;;
+0.ANT3_790;Modern;GenBank;CP006806;Zhgenti et al. (2015);;;;;;
+0.PE2_1412;Modern;GenBank;CP006783;Zhgenti et al. (2015);;;;;;
+0.PE2_1413;Modern;GenBank;CP006762;Zhgenti et al. (2015);;;;;;
+0.PE2_1522;Modern;GenBank;CP006758;Zhgenti et al. (2015);;;;;;
+0.PE2_1670;Modern;GenBank;AYLR00000000;Zhgenti et al. (2015);;;;;;
+0.PE2_3067;Modern;GenBank;CP006754;Zhgenti et al. (2015);;;;;;
+0.PE2_3770;Modern;GenBank;CP006751;Zhgenti et al. (2015);;;;;;
+0.PE2_8787;Modern;GenBank;CP006748;Zhgenti et al. (2015);;;;;;
+0.PE2_14735;Modern;GenBank;AYLS00000000;Zhgenti et al. (2015);;;;;;
+2.MED1_1045;Modern;GenBank;CP006794;Zhgenti et al. (2015);;;;;;
+2.MED1_2944;Modern;GenBank;CP006792;Zhgenti et al. (2015);;;;;;
+0.PE2_C.746;Modern;GenBank;MTZY00000000;Kislichkina et al. (2017);;;;;;
+0.PE2_C.824;Modern;GenBank;MTZZ00000000;Kislichkina et al. (2017);;;;;;
+0.PE2_C.370;Modern;GenBank;MIDX00000000;Kislichkina et al. (2017);;;;;;
+0.PE2_C.712;Modern;GenBank;MTZW00000000;Kislichkina et al. (2017);;;;;;
+0.PE2_C.739;Modern;GenBank;MIDX00000000;Kislichkina et al. (2017);;;;;;
+0.PE2_C.535;Modern;GenBank;MIDY00000000;Kislichkina et al. (2017);;;;;;
+0.PE2_C.678;Modern;GenBank;MIDZ00000000;Kislichkina et al. (2017);;;;;;
+0.PE2_C.700;Modern;GenBank;MIEA00000000;Kislichkina et al. (2017);;;;;;
+0.ANT3_231;Modern;GenBank;JMUF00000000;Eroshenko et al. (2017);;;;;;
+0.ANT3_A.1486;Modern;GenBank;LYMP00000000;Eroshenko et al. (2017);;;;;;
+0.ANT5_A.1691;Modern;GenBank;LYMQ00000000;Eroshenko et al. (2017);;;;;;
+0.ANT5_A.1836;Modern;GenBank;LYOL00000000;Eroshenko et al. (2017);;;;;;
+0.PE4h_A.1249;Modern;GenBank;LYMN00000000;Eroshenko et al. (2017);;;;;;
+0.PE4t_A.1815;Modern;GenBank;LPTY00000000;Eroshenko et al. (2017);;;;;;
+2.MED1_A.1809;Modern;GenBank;LYMF00000000;Eroshenko et al. (2017);;;;;;
+0.ANT5_262;Modern;GenBank;QAGE0000000;Kutyrev et al. (2018);;;;;;
+0.ANT5_5M;Modern;GenBank;QAGF00000000;Kutyrev et al. (2018);;;;;;
+0.PE2_3544;Modern;GenBank;LZNH00000000;Kutyrev et al. (2018);;;;;;
+0.PE2_3551;Modern;GenBank;MBSJ00000000;Kutyrev et al. (2018);;;;;;
+0.PE2_835_BPC;Modern;GenBank;LYOJ00000000;Kutyrev et al. (2018);;;;;;
+0.PE2_C.741;Modern;GenBank;LPTX00000000;Kutyrev et al. (2018);;;;;;
+0.PE2_KM874;Modern;GenBank;LZTG00000000;Kutyrev et al. (2018);;;;;;
+0.PE2_M.986;Modern;GenBank;LYMO00000000;Kutyrev et al. (2018);;;;;;
+0.PE4a_B1313;Modern;GenBank;LYMS00000000;Kutyrev et al. (2018);;;;;;
+0.PE4a_I.2751.55;Modern;GenBank;LYCL00000000;Kutyrev et al. (2018);;;;;;
+0.PE4a_I.2998;Modern;GenBank;LYMR00000000;Kutyrev et al. (2018);;;;;;
+0.PE4m_I.3086;Modern;GenBank;LZNY00000000;Kutyrev et al. (2018);;;;;;
+0.PE5_I.2422b;Modern;GenBank;QANK00000000;Kutyrev et al. (2018);;;;;;
+2.ANT3_KM682;Modern;GenBank;LPVG00000000;Kutyrev et al. (2018);;;;;;
+2.MED0_C.627;Modern;GenBank;MBSI00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_1116.D;Modern;GenBank;LPXS00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_1240;Modern;GenBank;LZNI00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_139;Modern;GenBank;QAPA00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_173;Modern;GenBank;LQAZ00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_1906;Modern;GenBank;LYOM00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_244;Modern;GenBank;LZND00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_261;Modern;GenBank;LZNG00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_44;Modern;GenBank;LZNF00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_A.1763;Modern;GenBank;LQAW00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_A.1825;Modern;GenBank;LYCM00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_A.1920;Modern;GenBank;LYCO00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_C.791;Modern;GenBank;LQAU00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_KM816;Modern;GenBank;LPXU00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_KM918;Modern;GenBank;LPQY00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_M.1448;Modern;GenBank;LYCN00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_M.1453;Modern;GenBank;LQAY00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_M.1484;Modern;GenBank;LQAV00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_M.1524;Modern;GenBank;LYCP00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_M.1773;Modern;GenBank;LYMG00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_M.1864;Modern;GenBank;LOHR00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_M.519;Modern;GenBank;LQAX00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_M.549;Modern;GenBank;LQBA00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_M.595;Modern;GenBank;LYOH00000000;Kutyrev et al. (2018);;;;;;
+2.MED1_M.978;Modern;GenBank;LPXT00000000;Kutyrev et al. (2018);;;;;;
+4.ANT_1454;Modern;GenBank;LZNC00000000;Kutyrev et al. (2018);;;;;;
+4.ANT_338;Modern;GenBank;LZNX00000000;Kutyrev et al. (2018);;;;;;
+4.ANT_517;Modern;GenBank;LYMH00000000;Kutyrev et al. (2018);;;;;;
+4.ANT_KM932;Modern;GenBank;LZNE00000000;Kutyrev et al. (2018);;;;;;
+4.ANT_M.1944;Modern;GenBank;LYOK00000000;Kutyrev et al. (2018);;;;;;
+0.PE4_I.3443;Modern;GenBank;MIED00000000;Kislichkina et al. (2018a);;;;;;
+0.PE4_I.3447;Modern;GenBank;MIEE00000000;Kislichkina et al. (2018a);;;;;;
+0.PE4_I.3518;Modern;GenBank;NHMY00000000;Kislichkina et al. (2018a);;;;;;
+0.PE4_I.3516;Modern;GenBank;NHMW00000000;Kislichkina et al. (2018a);;;;;;
+0.PE4_I.3515;Modern;GenBank;NHYJ00000000;Kislichkina et al. (2018a);;;;;;
+0.PE4_I.3442;Modern;GenBank;NHYH00000000;Kislichkina et al. (2018a);;;;;;
+0.PE4_I.3517;Modern;GenBank;NHMX00000000;Kislichkina et al. (2018a);;;;;;
+0.PE4_I.3446;Modern;GenBank;NHYI00000000;Kislichkina et al. (2018a);;;;;;
+0.PE4_I.3519;Modern;GenBank;NHMZ00000000;Kislichkina et al. (2018a);;;;;;
+0.PE5_I.2236;Modern;GenBank;PVLZ00000000;Kislichkina et al. (2018b);;;;;;
+0.PE5_I.3190;Modern;GenBank;PVLY00000000;Kislichkina et al. (2018b);;;;;;
+0.PE5_I.2231;Modern;GenBank;PVLW00000000;Kislichkina et al. (2018b);;;;;;
+0.PE5_I.2457;Modern;GenBank;PVMB00000000;Kislichkina et al. (2018b);;;;;;
+0.PE5_I.2238;Modern;GenBank;PVLX00000000;Kislichkina et al. (2018b);;;;;;

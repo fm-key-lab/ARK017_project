@@ -1,0 +1,5 @@
+Sample_Name_Library_ID	Library_ID	Lane	Colour_Chemistry	SeqType	Organism	Strandedness	UDG_Treatment	R1	R2	BAM
+GEN72_ERR2112579	ERR2112579	0	4	SE	Homo_sapiens	double	half	/ptmp/iclight/pestis_data/ERR2112579.fastq.gz	NA	NA
+GEN72_ERR2112580	ERR2112580	0	4	SE	Homo_sapiens	double	half	/ptmp/iclight/pestis_data/ERR2112580.fastq.gz	NA	NA
+GEN72_ERR2112581	ERR2112581	0	4	SE	Homo_sapiens	double	half	/ptmp/iclight/pestis_data/ERR2112581.fastq.gz	NA	NA
+GEN72_ERR2112582	ERR2112582	0	4	SE	Homo_sapiens	double	half	/ptmp/iclight/pestis_data/ERR2112582.fastq.gz	NA	NA

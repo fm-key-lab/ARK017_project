@@ -1,0 +1,93 @@
+﻿Sample label;Original Biosample ID;SRR ID current;SNP chip;Original Species;Original Region;Original labeled breed;Corrected ID;Corrected Species;Corrected Region;Corrected breed;Used for PCA space generation;Plotted;pc1;pc2;pc3
+ARK017;x;xx;NA;Ovis aries;NA;NA;ARK017;Ovis aries;NA;NA;FALSE;TRUE;-0,0448;-0,0326;-0,0463
+KR.4;SRR11657642;SRR11657642;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon1;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0874;0,2248;-0,0078
+KR.6;SRR11657500;SRR11657500;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon10;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0706;0,2127;0,001
+SH.19;SRR11657506;SRR11657506;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon11;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0766;0,2263;0
+SH.20;SRR11657507;SRR11657507;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon12;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0612;0,1968;0,0011
+SH.7;SRR11657501;SRR11657501;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon19;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0768;0,195;0,0022
+TH.1;SRR11657640;SRR11657640;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon2;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0619;0,1883;0,0008
+TH.2;SRR11657641;SRR11657641;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon20;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,066;0,2172;0,005
+266;SRR11657635;SRR11657635;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon266;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0601;0,1945;0,0045
+267;SRR11657636;SRR11657636;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon267;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0564;0,1863;0,0087
+271;SRR11657637;SRR11657637;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon271;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0843;0,2281;-0,0054
+272;SRR11657638;SRR11657638;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon272;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,079;0,2286;-0,0022
+273;SRR11657639;SRR11657639;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon273;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0825;0,2281;-0,0067
+YZ.10;SRR11657503;SRR11657503;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon4;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0788;0,2275;-0,0004
+YZ.11;SRR11657504;SRR11657504;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon6;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,079;0,2271;-0,004
+YZ.12;SRR11657505;SRR11657505;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon7;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,066;0,2174;0,0037
+YZ.9;SRR11657502;SRR11657502;ISGC;Ovis orientalis;SW Asia;AsiaticMouflon;AsiaticMouflon9;Ovis orientalis;SW Asia;AsiaticMouflon;TRUE;TRUE;0,0802;0,2269;-0,0029
+OARI_AFS32;SRS335685;SRR501853;ISGC;Ovis aries;SW Asia;Afshari;OARI_AFS32;Ovis aries;SW Asia;Afshari;TRUE;TRUE;-0,0449;-0,0357;-0,117
+OARI_AFS33;SRS335703;SRR501871;ISGC;Ovis aries;SW Asia;Afshari;OARI_AFS33;Ovis aries;SW Asia;Afshari;TRUE;TRUE;-0,0447;-0,0353;-0,123
+OARI_AW454;SRS335723;SRR501890;ISGC;Ovis aries;SW Asia;Awassi;OARI_AW454;Ovis aries;SW Asia;Awassi;TRUE;TRUE;-0,0451;-0,0361;-0,114
+OARI_AWD1;SRS335725;SRR501892;ISGC;Ovis aries;Africa;African_White_Dorper;OARI_AWD1;Ovis aries;Africa;African_White_Dorper;TRUE;TRUE;-0,0447;-0,0355;0,008
+OARI_AWD3;SRS335724;SRR501891;ISGC;Ovis aries;Africa;African_White_Dorper;OARI_AWD3;Ovis aries;Africa;African_White_Dorper;TRUE;TRUE;-0,0446;-0,035;0,0036
+OARI_AWT1;SRS335726;SRR501893;ISGC;Ovis aries;SW Asia;Turkish_Awassi;OARI_AWT1;Ovis aries;SW Asia;Turkish_Awassi;TRUE;TRUE;-0,0443;-0,0342;-0,1172
+OARI_AWT2;SRS335704;SRR501872;ISGC;Ovis aries;SW Asia;Turkish_Awassi;OARI_AWT2;Ovis aries;SW Asia;Turkish_Awassi;TRUE;TRUE;-0,044;-0,0343;-0,1192
+OARI_BCS1;SRR501846;SRR501846;ISGC;Ovis aries;America;Brazilian_Creole;OARI_BCS3;Ovis aries;America;Brazilian_Creole;TRUE;TRUE;-0,0451;-0,0369;0,0808
+OARI_BCS3;SRR501855;SRR501855;ISGC;Ovis aries;America;Brazilian_Creole;OARI_SWAA29;Ovis aries;C Europe;Swiss_White_Alpine;TRUE;TRUE;-0,0475;-0,0408;0,1773
+OARI_BGE2;SRS335686;SRR501854;ISGC;Ovis aries;S Asia;Bangladeshi;OARI_BGE2;Ovis aries;S Asia;Bangladeshi;TRUE;TRUE;-0,0468;-0,0396;-0,2318
+OARI_BGE4;SRS335705;SRR501873;ISGC;Ovis aries;S Asia;Bangladeshi;OARI_BGE4;Ovis aries;S Asia;Bangladeshi;TRUE;TRUE;-0,047;-0,0399;-0,2348
+OARI_BMN3;SRR501837;SRR501837;ISGC;Ovis aries;America;Morada_Nova;OARI_BMN3;Ovis aries;America;Morada_Nova;TRUE;TRUE;-0,0439;-0,0336;0,0058
+OARI_BMN4;SRR501839;SRR501839;ISGC;Ovis aries;America;Morada_Nova;OARI_BMN4;Ovis aries;America;Morada_Nova;TRUE;TRUE;-0,0433;-0,0329;-0,0076
+OARI_BSI3;SRR501838;SRR501840;ISGC;Ovis aries;America;Santa_Ines;OARI_BSI3;Ovis aries;America;Santa_Ines;TRUE;TRUE;-0,0421;-0,0323;-0,0063
+OARI_BSI4;SRR501840;SRR501838;ISGC;Ovis aries;America;Santa_Ines;OARI_BSI4;Ovis aries;America;Santa_Ines;TRUE;TRUE;-0,0444;-0,0347;-0,0043
+OARI_CAS1;SRS335707;SRR501904;ISGC;Ovis aries;SW Europe;Castellana;OARI_OJA5;Ovis aries;SW Europe;Ojalada;TRUE;TRUE;-0,0441;-0,0346;0,081
+OARI_CAS3;SRS335688;SRR501883;ISGC;Ovis aries;SW Europe;Castellana;OARI_FIN1;Ovis aries;N Europe;Finnsheep;TRUE;TRUE;-0,0444;-0,0347;0,0622
+OARI_CC50;SRS335708;SRR501875;ISGC;Ovis aries;SW Asia;Cine_Capari;OARI_CC50;Ovis aries;SW Asia;Cine_Capari;TRUE;TRUE;-0,044;-0,0343;-0,0455
+OARI_CHA02;SRS335689;SRR501857;ISGC;Ovis aries;S Asia;Changthangi;OARI_CHA02;Ovis aries;S Asia;Changthangi;TRUE;TRUE;-0,0449;-0,0361;-0,1435
+OARI_CHA05;SRS335727;SRR501894;ISGC;Ovis aries;S Asia;Changthangi;OARI_CHA05;Ovis aries;S Asia;Changthangi;TRUE;TRUE;-0,0454;-0,0362;-0,1365
+OARI_CHU1;SRS335728;SRR501848;ISGC;Ovis aries;SW Europe;Churra;OCAN_OCAN1;Ovis canadensis;America;Ovis_canadensis;TRUE;TRUE;0,3933;-0,1861;-0,0001
+OARI_CHU2;SRS335730;SRR501909;ISGC;Ovis aries;SW Europe;Churra;ODAL_ODAL1;Ovis dalli;America;Ovis_dalli;TRUE;TRUE;0,393;-0,1856;-0,0001
+OARI_CHVA1;SRR501906;SRR501896;ISGC;Ovis aries;N Europe;Cheviot;OARI_CHVA1;Ovis aries;N Europe;Cheviot;TRUE;TRUE;-0,0456;-0,0372;0,1519
+OARI_CHVC1;ERS1461120;SRR501906;ISGC;Ovis aries;N Europe;Cheviot;OCAN_OCAN2;Ovis canadensis;America;Ovis_canadensis;TRUE;TRUE;0,3934;-0,1861;-0,0001
+OARI_DWM1;SRS335709;SRR501876;ISGC;Ovis aries;N Europe;Dollgellau_Welsh_Mountain;OARI_DWM1;Ovis aries;N Europe;Dollgellau_Welsh_Mountain;TRUE;TRUE;-0,0436;-0,0341;0,1157
+OARI_EMZ1;SRS335697;SRR501865;ISGC;Ovis aries;Africa;Ethiopian_Menz;OARI_EMZ1;Ovis aries;Africa;Ethiopian_Menz;TRUE;TRUE;-0,0411;-0,0288;-0,1295
+OARI_FIN1;SRS335716;SRR501856;ISGC;Ovis aries;N Europe;Finnsheep;OARI_CAS3;Ovis aries;SW Europe;Castellana;TRUE;TRUE;-0,0438;-0,0339;0,0762
+OARI_FIN4;SRS335737;SRR501879;ISGC;Ovis aries;N Europe;Finnsheep;OARI_CAS1;Ovis aries;SW Europe;Castellana;TRUE;TRUE;-0,0441;-0,0343;0,0627
+OARI_GAR14;SRS335735;SRR501902;ISGC;Ovis aries;S Asia;Garole;OARI_GAR14;Ovis aries;S Asia;Garole;TRUE;TRUE;-0,0467;-0,0392;-0,2151
+OARI_GAR4;SRS335736;SRR501903;ISGC;Ovis aries;S Asia;Indian_Garole;OARI_GAR4;Ovis aries;S Asia;Indian_Garole;TRUE;TRUE;-0,0462;-0,0389;-0,2096
+OARI_GCN4;SRR501899;SRR501899;ISGC;Ovis aries;America;Gulf_Coast_native;OARI_CHVC1;Ovis aries;N Europe;Cheviot;TRUE;TRUE;-0,0453;-0,0365;0,1533
+OARI_GCN5;SRR501905;SRR501905;ISGC;Ovis aries;America;Gulf_Coast_native;OARI_GCN5;Ovis aries;America;Gulf_Coast_native;TRUE;TRUE;-0,0434;-0,0334;0,0877
+OARI_GUR4;SRS335698;SRR501866;ISGC;Ovis aries;Indonesia;Garut;OARI_GUR4;Ovis aries;Indonesia;Garut;TRUE;TRUE;-0,0457;-0,0372;-0,1665
+OARI_GUR5;SRS335718;SRR501885;ISGC;Ovis aries;Indonesia;Garut;OARI_GUR5;Ovis aries;Indonesia;Garut;TRUE;TRUE;-0,0452;-0,0369;-0,1634
+OARI_KR4;SRS335699;SRR501867;ISGC;Ovis aries;SW Asia;Karya;OARI_KR4;Ovis aries;SW Asia;Karya;TRUE;TRUE;-0,0445;-0,0348;-0,0261
+OARI_KRS3;SRS335719;SRR501886;ISGC;Ovis aries;SW Asia;Karakas;OARI_KRS3;Ovis aries;SW Asia;Karakas;TRUE;TRUE;-0,0454;-0,0371;-0,1289
+OARI_KRS5;SRS335681;SRR501849;ISGC;Ovis aries;SW Asia;Karakas;OARI_KRS5;Ovis aries;SW Asia;Karakas;TRUE;TRUE;-0,0451;-0,037;-0,0736
+OARI_LAC1;SRS335682;SRR501850;ISGC;Ovis aries;SW Europe;Meat_Lacaune;OARI_LAC1;Ovis aries;SW Europe;Meat_Lacaune;TRUE;TRUE;-0,0438;-0,0347;0,0901
+OARI_LAC84;SRS335683;SRR501851;ISGC;Ovis aries;SW Europe;Milk_Lacaune;OARI_LAC84;Ovis aries;SW Europe;Milk_Lacaune;TRUE;TRUE;-0,0437;-0,034;0,0869
+OARI_MER454;SRS335684;SRR501852;ISGC;Ovis aries;SW Europe;Merino;OARI_MER454;Ovis aries;SW Europe;Merino;TRUE;TRUE;-0,0437;-0,0331;0,0886
+OARI_MERA1;SRS335720;SRR501887;ISGC;Ovis aries;SW Europe;Merino;OARI_MERA1;Ovis aries;SW Europe;Merino;TRUE;TRUE;-0,0452;-0,037;0,1205
+OARI_MERC1;SRS335700;SRR501868;ISGC;Ovis aries;SW Europe;Merino;OARI_MERC1;Ovis aries;SW Europe;Merino;TRUE;TRUE;-0,0452;-0,0367;0,1224
+OARI_NDZ1;SRS335721;SRR501888;ISGC;Ovis aries;SW Asia;Norduz;OARI_NDZ1;Ovis aries;SW Asia;Norduz;TRUE;TRUE;-0,0449;-0,035;-0,1134
+OARI_NDZ4;SRS335701;SRR501869;ISGC;Ovis aries;SW Asia;Norduz;OARI_NDZ4;Ovis aries;SW Asia;Norduz;TRUE;TRUE;-0,0445;-0,0352;-0,1168
+OARI_NQA11;SRS335740;SRR501907;ISGC;Ovis aries;Africa;Namaqua_Afrikaner;OARI_NQA11;Ovis aries;Africa;Namaqua_Afrikaner;TRUE;TRUE;-0,0445;-0,0345;-0,1174
+OARI_OJA4;SRS335741;SRR501900;ISGC;Ovis aries;SW Europe;Ojalada;OARI_SWAN3;Ovis aries;C Europe;Swiss_White_Alpine;TRUE;TRUE;-0,0468;-0,0395;0,1785
+OARI_OJA5;SRS335742;SRR501911;ISGC;Ovis aries;SW Europe;Ojalada;OARI_CHU2;Ovis aries;SW Europe;Churra;TRUE;TRUE;-0,0438;-0,0338;0,0758
+OARI_PD454;SRS335743;SRR501910;ISGC;Ovis aries;N Europe;Poll_Dorset;OARI_PD454;Ovis aries;N Europe;Poll_Dorset;TRUE;TRUE;-0,045;-0,0359;0,119
+OARI_RDA2;SRS335702;SRR501870;ISGC;Ovis aries;Africa;Ronderib_Afrikaner;OARI_RDA2;Ovis aries;Africa;Ronderib_Afrikaner;TRUE;TRUE;-0,0446;-0,0349;-0,1031
+OARI_RDA4;SRS335722;SRR501889;ISGC;Ovis aries;Africa;Ronderib_Afrikaner;OARI_RDA4;Ovis aries;Africa;Ronderib_Afrikaner;TRUE;TRUE;-0,0444;-0,0349;-0,1035
+OARI_ROM454;SRS335691;SRR501859;ISGC;Ovis aries;N Europe;Romney;OARI_ROM454;Ovis aries;N Europe;Romney;TRUE;TRUE;-0,0435;-0,0346;0,1283
+OARI_SALA1;SRS335710;SRR501877;ISGC;Ovis aries;SW Europe;Salz;OARI_SALA1;Ovis aries;SW Europe;Salz;TRUE;TRUE;-0,0463;-0,0391;0,0838
+OARI_SALA2;SRS335674;SRR501842;ISGC;Ovis aries;SW Europe;Salz;OARI_SALA2;Ovis aries;SW Europe;Salz;TRUE;TRUE;-0,0459;-0,0386;0,085
+OARI_SALC1;SRS335673;SRR501841;ISGC;Ovis aries;SW Europe;Salz;OARI_SALC1;Ovis aries;SW Europe;Salz;TRUE;TRUE;-0,0452;-0,0371;0,0815
+OARI_SBF454;SRS335676;SRR501844;ISGC;Ovis aries;N Europe;Scottish_Blackface;OARI_SBF454;Ovis aries;N Europe;Scottish_Blackface;TRUE;TRUE;-0,0437;-0,0337;0,1128
+OARI_SKZ1;SRS335675;SRR501843;ISGC;Ovis aries;SW Asia;Sakiz;OARI_SKZ1;Ovis aries;SW Asia;Sakiz;TRUE;TRUE;-0,0456;-0,0371;-0,043
+OARI_SKZ4;SRS335711;SRR501878;ISGC;Ovis aries;SW Asia;Sakiz;OARI_SKZ4;Ovis aries;SW Asia;Sakiz;TRUE;TRUE;-0,0453;-0,0366;-0,0438
+OARI_SMS2;SRS335692;SRR501864;ISGC;Ovis aries;C Europe;Swiss_Mirror;OARI_VBS2;Ovis aries;C Europe;Valais_Blacknose;TRUE;TRUE;-0,0442;-0,0355;0,0824
+OARI_SUM2;SRS335713;SRR501880;ISGC;Ovis aries;Indonesia;Sumatra;OARI_SUM2;Ovis aries;Indonesia;Sumatra;TRUE;TRUE;-0,0462;-0,0384;-0,1677
+OARI_SUM7;SRS335693;SRR501861;ISGC;Ovis aries;Indonesia;Sumatra;OARI_SUM7;Ovis aries;Indonesia;Sumatra;TRUE;TRUE;-0,0458;-0,0381;-0,1784
+OARI_SWAA27;SRR501884;SRR501884;ISGC;Ovis aries;C Europe;Swiss_White_Alpine;OARI_FIN4;Ovis aries;N Europe;Finnsheep;TRUE;TRUE;-0,044;-0,0342;0,0688
+OARI_SWAA29;SRS335731;SRR501874;ISGC;Ovis aries;C Europe;Swiss_White_Alpine;OCAN_OCAN3;Ovis canadensis;America;Ovis_canadensis;TRUE;TRUE;0,3932;-0,1859;-0,0001
+OARI_SWAN3;SRR501908;SRR501908;ISGC;Ovis aries;C Europe;Swiss_White_Alpine;OARI_GCN4;Ovis aries;America;Gulf_Coast_native;TRUE;TRUE;-0,0436;-0,0336;0,0954
+OARI_SWAN4;SRR501862;SRR501862;ISGC;Ovis aries;C Europe;Swiss_White_Alpine;OARI_OJA4;Ovis aries;SW Europe;Ojalada;TRUE;TRUE;-0,0444;-0,0349;0,084
+OARI_TEX454;SRS335734;SRR501901;ISGC;Ovis aries;N Europe;Texel;OARI_TEX454;Ovis aries;N Europe;Texel;TRUE;TRUE;-0,0455;-0,0377;0,1308
+OARI_TWM1;SRS335715;SRR501882;ISGC;Ovis aries;N Europe;Tregaon_Welsh_mountain;OARI_TWM1;Ovis aries;N Europe;Tregaon_Welsh_mountain;TRUE;TRUE;-0,0436;-0,0332;0,1176
+OARI_VBS2;SRS335694;SRR501860;ISGC;Ovis aries;C Europe;Valais_Blacknose;OARI_SWAN4;Ovis aries;C Europe;Swiss_White_Alpine;TRUE;TRUE;-0,0472;-0,0405;0,1799
+OARI_WHSF1;SRS335714;SRR501881;ISGC;Ovis aries;N Europe;Welsh_Hardy_Speckled_Face;OARI_WHSF1;Ovis aries;N Europe;Welsh_Hardy_Speckled_Face;TRUE;TRUE;-0,0438;-0,0342;0,1262
+OARI_ZB08;SRS335695;SRR501863;ISGC;Ovis aries;Tibet;Northern_Tibetan;OARI_ZB08;Ovis aries;Tibet;Northern_Tibetan;TRUE;TRUE;-0,0446;-0,036;-0,1183
+OARI_ZD11;SRS335677;SRR501845;ISGC;Ovis aries;Tibet;Eastern_Tibetan;OARI_ZD11;Ovis aries;Tibet;Eastern_Tibetan;TRUE;TRUE;-0,0445;-0,0353;-0,1227
+OCAN_OCAN1;;SRR501895;ISGC;Ovis canadensis;America;Ovis_canadensis;OARI_BCS1;Ovis aries;America;Brazilian_Creole;TRUE;TRUE;-0,0453;-0,0366;0,0554
+OCAN_OCAN2;;SRR501858;ISGC;Ovis canadensis;America;Ovis_canadensis;OARI_CHU1;Ovis aries;SW Europe;Churra;TRUE;TRUE;-0,0441;-0,0336;0,0792
+OCAN_OCAN3;;SRR501898;ISGC;Ovis canadensis;America;Ovis_canadensis;ODAL_ODAL2;Ovis dalli;America;Ovis_dalli;TRUE;TRUE;0,393;-0,1855;-0,0002
+ODAL_ODAL1;;SRR501897;ISGC;Ovis dalli;America;Ovis_dalli;OARI_SMS2;Ovis aries;C Europe;Swiss_Mirror;TRUE;TRUE;-0,0446;-0,0356;0,1113
+ODAL_ODAL2;;SRR501847;ISGC;Ovis dalli;America;Ovis_dalli;OARI_SWAA27;Ovis aries;C Europe;Swiss_White_Alpine;TRUE;TRUE;-0,0472;-0,0403;0,1783
