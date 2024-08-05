@@ -1,8 +1,8 @@
-# Online Code Repository for: Bronze Age *Y. pestis* Genome from Sheep Sheds Light on Hosts and Evolution of Prehistoric Plague Lineage
+# Online Code/Metadata Repository for ARK017 and reanalysis of *Y. pestis* ancient genomes
 
 ## Repository Contents
 
-This repository contains code, input data sheets, metadata, and small datasets used for the paper: **Bronze Age Y. pestis Genome from Sheep Sheds Light on Hosts and Evolution of Prehistoric Plague Lineage**, Light-Maka et al.
+This repository contains code, input data sheets, metadata, and small datasets used for the manuscript by Light-Maka et al.
 
 Additional questions or comments can be sent to light@mpiib-berlin.mpg.de, or via github issues.
 
