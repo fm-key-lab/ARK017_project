@@ -1,13 +1,6 @@
 #! /bin/bash
 # This script creates necessary input files for bedtools to annotate breadth and depth on genic regions
 
-# generated from genome.fai for pangeome
-
-working_directory=/nexus/posix0/MPIIB-keylab/reference_genomes/Ypestis_pseudotb_enterocolitica_pangenome
-
-awk -F'\t' '{print $1, "1", $2}' ${working_directory}/pan_genome_reference.fa.fai | sed 's/ /\t/g' > ${working_directory}/genic_accession_for_bedtools.txt
-awk -F'\t' '{print $1, $2}' ${working_directory}/pan_genome_reference.fa.fai | sed 's/ /\t/g' > ${working_directory}/genome_file_for_bedtools.txt
-
 # generated from genome.gff for pestis reference genome (CO92)
 
 working_directory=/nexus/posix0/MPIIB-keylab/reference_genomes/Ypestis_ASM906v1
