@@ -42,7 +42,7 @@ os.chdir('/Users/ad_loris/Documents/key_lab/outputs/pestis_evolution/production_
 
 ref_genome_folder='/Users/ad_loris/Nextcloud/keylab/reference_genomes/Ypestis_ASM906v1'
 
-sys.path.append("/Users/ad_loris/Nextcloud/keylab/projects/il_bronzeage_pestis_evo/ark017_lnba_project/analysis_py")
+sys.path.append("/Users/ad_loris/Nextcloud/keylab/projects/il_bronzeage_pestis_evo/ark017_lnba_project/local_analysis/analysis_py")
 import analysispy_modules_pestis as apyp
 
 cmtFile_sub_gp = 'candidate_mutation_table_processed_gp.pickle.gz'
@@ -91,6 +91,7 @@ lnba_metadata=pd.read_csv(lnba_metadata_path,sep='\t')
 #   Info from genome files
 [chrStarts, genomeLength, scafNames] = apyp.genomestats(ref_genome_folder);
 
+# save 
 # %% 
 # Extract refnt and define out/in-group bools
 # =============================================================================
@@ -313,6 +314,47 @@ snp_table = pd.concat([snp_metadata,snp_data.reset_index(drop=True)], axis=1)
 with open(f'{analysis_params_output_name}_snp_table.csv', 'w') as file:
     snp_table.to_csv(file, header=True, index=False)
 
+# %%
+# Comparisons with Cui SNP numbers
+print('Total SNPs identified:', len(goodpos))
+
+non_cui_samples_modern_samples=['0.PE4_A.1804','0.PE4_5307.Gis','0.PE2_C.359','0.PE2_C.590','0.PE2_C.666','0.PE4_I.3134','0.PE2_C.291','0.PE5_I.3189','0.PE2_C.267','0.PE2_C.537','0.PE4_A.1807','0.PE2_C.197','0.PE4_A.513','0.PE2_C.290','0.PE5_I.2422a','0.PE2_C.346','0.PE5_I.2239','0.PE2_C.235','0.PE4_I.3455']
+non_cui_samples_modern_indexes=np.in1d(sampleNames,non_cui_samples_modern_samples)
+cui_samples_modern_mutations=np.where(hasmutation[:,(~non_cui_samples_modern_indexes & ~ancient_sample_bool)].sum(axis=1)>0)[0]
+print('Total identified from reanalysis of only Cui Samples:', len(cui_samples_modern_mutations))
+
+# Identify SNPs driven by inclusion of new samples by finding where no mutation is ID'd when analyzing all other samples
+
+ex_kishlinchkina=np.where(hasmutation[:,~(non_cui_samples_modern_samples)].sum(axis=1)==0)[0]
+print('Total identified from inclusion of Kislichkina:', len(ex_kishlinchkina))
+ex_non_lnba_ancient=np.where(hasmutation[:,~(ancient_sample_bool & ~LNBA_clade_indices)].sum(axis=1)==0)[0]
+print('Total SNPs identified from inclusion of additional non LNBA ancient genomes:', len(ex_non_lnba_ancient))
+ex_lnba_ancient=np.where(hasmutation[:,~(LNBA_clade_indices)].sum(axis=1)==0)[0]
+print('Total SNPs identified from inclusion of additional LNBA ancient genomes:', len(ex_non_lnba_ancient))
+
+
+# what masked SNPs from Aida do we call (aida IDs ~900 SNPs on LNBA, us 1150)
+aida_filtering_not_done={}
+possibilities_for_exclusion={'Morelli': 'morelli_exclude_region',
+ 'Repeat': 'repeat_region',
+ 'Noncore': 'non_core_region',
+ 'Mcmaster': 'outside_intersection_with_mcmaster',
+ 'Referr': 'ref_error',
+ 'RNA': 'RNA',
+ 'False': 'SNP'}
+
+parsed_exclusion_not_done = [possibilities_for_exclusion[x] for x in possibilities_for_exclusion if x not in ['repeat_region', 'RNA']]
+with open('/Users/ad_loris/Documents/key_lab/test/regions2exclude_with-non-core_morelli-exclude_ref-errors_outsideMcMasterIntersect_lnbapaperfalseSNPS_20211125.gff') as f:
+        for line in f.readlines():
+            entries=line.strip().split('\t')
+            if len(entries)>1:
+                for exclusion in parsed_exclusion_not_done:
+                    if exclusion in entries[2]:
+                        for i in range(int(entries[3]),int(entries[4])+1):
+                            aida_filtering_not_done[i] = f'{entries[0]}:{i}-{i} {entries[2]}'
+for x in ex_lnba_ancient:
+    if p[x]+1 in aida_filtering_not_done:
+        print(x,p[x]+1,aida_filtering_not_done[p[x]+1])
 # %% 
 # Estimate substitution rate
 # =============================================================================
@@ -343,14 +385,6 @@ afile = open(f"{analysis_params_output_name}_mutationalspectrum.py.pk1", 'wb')
 pickle.dump(mutationalspectrum, afile)
 afile.close()
 # %% adding homoplasy calls
-# Out of python, generate prokka annotate ancestral reconstruction annotation
-#anc_reconstruction_folder = '/Users/ad_loris/Documents/key_lab/outputs/pestis_evolution/all/snppar/ancestral_reconstruction'
-#ancestral_fasta = apyp.extract_outgroup_mutation_positions(anc_reconstruction_folder, apyp.p2chrpos(p,chrStarts));
-
-#annotation_genes_ancestral_reconstruction=apyp.parse_gff('/Users/ad_loris/Documents/key_lab/outputs/pestis_evolution/all/ancestral_reconstruction_backup/prokka/',scafNames,forceReDo=True)
-
-#annotation_mutations_ancestral=apyp.annotate_mutations(annotation_genes_ancestral_reconstruction , p , refnti_m , ancestral_reconstruction_nti_m , calls , counts , hasmutation, mutQual , promotersize , ref_genome_folder, goodpos) # extract relevant annotation info for each SNP    
-
 ## update annotation mutations with this info
 annotation_mutations = apyp.annotate_mutations(annotation_genes , p , refnti_m, outsplnti_m, calls, counts, hasmutation, mutQual, promotersize , ref_genome_folder, goodpos) # extract relevant annotation info for each SNP    
 annotation_mutations.insert(27,'num_mutational_events',num_mutational_events_goodpos_terminal_nodes)
@@ -386,11 +420,32 @@ def get_internal_node_calls(internal_node_clade,ancestral_reconstruction_fasta):
     return calls_pos[internal_node_clade.name]
 
 # %% generate SNP distances separating 83bootstrap ARK polytomy vs 17 bootstrap polytomy
-ark_83_support_parent_clade=tree.common_ancestor(['ARK017','KZL002'])
-ark_17_support_parent_clade=tree.common_ancestor(['KLE031','KZL002'])
-ark_83_support_parent_clade_calls=apyp.nts2idx(np.array([x for x in get_internal_node_calls(ark_83_support_parent_clade,ancestral_reconstruction_fasta)]))
-ark_17_support_parent_clade_calls=apyp.nts2idx(np.array([x for x in get_internal_node_calls(ark_17_support_parent_clade,ancestral_reconstruction_fasta)]))
-print('SNVs separating polytomies:',np.sum(ark_83_support_parent_clade_calls!=ark_17_support_parent_clade_calls))
+ark_78_support_parent_clade=tree.common_ancestor(['ARK017','KZL002'])
+ark_22_support_parent_clade=tree.common_ancestor(['KLE031','KZL002'])
+ark_78_support_parent_clade_calls=apyp.nts2idx(np.array([x for x in get_internal_node_calls(ark_78_support_parent_clade,ancestral_reconstruction_fasta)]))
+ark_22_support_parent_clade_calls=apyp.nts2idx(np.array([x for x in get_internal_node_calls(ark_22_support_parent_clade,ancestral_reconstruction_fasta)]))
+print('SNVs separating polytomies:',np.sum(ark_78_support_parent_clade_calls!=ark_22_support_parent_clade_calls))
+
+# %% generate number of SNVs different between KLE031, DHS025 and ARK017
+kle_calls=np.array([x for x in get_internal_node_calls([x for x in tree.find_elements('KLE031')][0],ancestral_reconstruction_fasta)])
+kle_ns=kle_calls=='N'
+dsh_calls=np.array([x for x in get_internal_node_calls([x for x in tree.find_elements('DSH025')][0],ancestral_reconstruction_fasta)])
+dsh_ns=dsh_calls=='N'
+
+kle048_calls=np.array([x for x in get_internal_node_calls([x for x in tree.find_elements('KLE048')][0],ancestral_reconstruction_fasta)])
+kle048_ns=kle048_calls=='N'
+mib_calls=np.array([x for x in get_internal_node_calls([x for x in tree.find_elements('MIB054')][0],ancestral_reconstruction_fasta)])
+mib034_ns=mib_calls=='N'
+
+ark_calls=np.array([x for x in get_internal_node_calls([x for x in tree.find_elements('ARK017')][0],ancestral_reconstruction_fasta)])
+ark_ns=ark_calls=='N'
+
+
+print('Pairwise SNVs KLE031 and ARK017:', np.sum(kle_calls[~(ark_ns|kle_ns)]!=ark_calls[~(ark_ns|kle_ns)]))
+print('Pairwise SNVs DSH025 and ARK017:', np.sum(dsh_calls[~(ark_ns|dsh_ns)]!=ark_calls[~(ark_ns|dsh_ns)]))
+print('Pairwise SNVs KLE048 and ARK017:', np.sum(kle048_calls[~(ark_ns|kle048_ns)]!=ark_calls[~(ark_ns|kle048_ns)]))
+print('Pairwise SNVs MIB034 and ARK017:', np.sum(mib_calls[~(ark_ns|mib034_ns)]!=ark_calls[~(ark_ns|mib034_ns)]))
+# %%
 
 # TRUE BACKBONE SNPS
 # lnba backbone

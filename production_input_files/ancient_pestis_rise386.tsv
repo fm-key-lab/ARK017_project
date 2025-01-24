@@ -1,0 +1,21 @@
+Sample_Name     Library_ID      Lane    Colour_Chemistry        SeqType Organism        Strandedness    UDG_Treatment   R1      R2      BAM
+RISE386 MA626_L2        1       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018927.fastq.gz       NA      NA
+RISE386 MA626_L2        2       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018928.fastq.gz       NA      NA
+RISE386 MA626_L2        3       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018929.fastq.gz       NA      NA
+RISE386 MA626_L2        4       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018930.fastq.gz       NA      NA
+RISE386 MA626_L2        5       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018931.fastq.gz       NA      NA
+RISE386 MA626_L2        6       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018932.fastq.gz       NA      NA
+RISE386 MA626_L2        7       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018933.fastq.gz       NA      NA
+RISE386 MA626_L2        8       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018934.fastq.gz       NA      NA
+RISE386 MA626_L2        9       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018935.fastq.gz       NA      NA
+RISE386 MA626_L2        10      4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018936.fastq.gz       NA      NA
+RISE386 MA626_L2        11      4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018937.fastq.gz       NA      NA
+RISE386 MA626_L2        12      4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018938.fastq.gz       NA      NA
+RISE386 MA626_L3        1       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018939.fastq.gz       NA      NA
+RISE386 MA626_L3        2       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018940.fastq.gz       NA      NA
+RISE386 MA626_L3        3       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018941.fastq.gz       NA      NA
+RISE386 MA626_L3        4       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018942.fastq.gz       NA      NA
+RISE386 MA626_L3        5       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018943.fastq.gz       NA      NA
+RISE386 MA626_L3        6       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018944.fastq.gz       NA      NA
+RISE386 MA626_L3        7       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018945.fastq.gz       NA      NA
+RISE386 MA626_L3        8       4       SE      Homo sapiens    double  none    /ptmp/iclight/rise386/ERR1018946.fastq.gz       NA      NA

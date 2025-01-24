@@ -14,7 +14,7 @@ grep 'Y. pseudotuberculosis' ../modern_accessions.tsv | while read line
     id=$(echo $line | cut -f1 -d' ')
     accession=$(echo $line | cut -f6 -d' '| sed 's/ /_/g')
     fasta_basename=$(tail -n+2 ${accession}.runinfo_ftp.tsv | cut -f1)
-    echo "${id} ${id} 1 4 PE unknown double none ${fetchngs_dir}/fastq/${fasta_basename}_1.fastq.gz ${fetchngs_dir}/fastq/${fasta_basename}_2.fastq.gz NA" >> /u/iclight/eager/pestis_project/pseudotb.tsv
+    echo "${id} ${id} 1 4 PE   ${fetchngs_dir}/fastq/${fasta_basename}_1.fastq.gz ${fetchngs_dir}/fastq/${fasta_basename}_2.fastq.gz NA" >> /u/iclight/eager/pestis_project/pseudotb.tsv
 done
 
 

@@ -221,7 +221,7 @@ if "None" not in optional_filtering['aida_filtering']:
                     for exclusion in parsed_exclusion_not_done:
                         if exclusion in entries[2]:
                             for i in range(int(entries[3]),int(entries[4])+1):
-                                aida_filtering_not_done.add(i)
+                                aida_filtering_not_done.add([i])
 # %% 
 # Define goodsamples and filter data, good samples have > avg coverage
 # =============================================================================
@@ -600,6 +600,7 @@ singletons_to_mask=[]
 singletons_to_mask_possibly_fine=[]
 singletons_to_mask_sample=[]
 counts_should_update=0
+reads_failed={}
 for blast_result_file in blast_results:
     blast_results_dict={}
     sampleid_for_query,chromid_posid_for_query=blast_result_file.split('/')[2].split('_NC_')
@@ -626,6 +627,7 @@ for blast_result_file in blast_results:
     maf_this_call=maf[p_index_this_query,sample_index_this_query]
     # number of pestis/pseudotb specific reads MUST exceed this proportion of reads to be retained
     reads_passed=[]
+    reads_failed[sampleid_for_query]=[]
     reads_assessed=0
     for read_assessed in blast_results_dict:
         reads_assessed+=1
@@ -633,6 +635,8 @@ for blast_result_file in blast_results:
             taxid_hits_array=np.array([x for x in taxid_hits])
             if len(np.intersect1d(np.array(pseudo_taxids+pestis_taxids),taxid_hits_array)) > 0:
                 reads_passed.append(read_assessed)
+            else:
+                reads_failed[sampleid_for_query].append(read_assessed)
     num_reads_passed=len(reads_passed)
     counts_coverage=np.sum(counts[sample_index_this_query,:,p_index_this_query])
     if num_reads_passed != counts_coverage:
@@ -643,6 +647,19 @@ for blast_result_file in blast_results:
         #print(f'Passed: {num_reads_passed}, Assessed: {reads_assessed}, Total Coverage: {pileup_coverage}')
     call_support_remaining=cleaned_calls[np.in1d(cleaned_reads,np.array(reads_passed))]
     counts=update_counts_for_singleton(counts,call_support_remaining,sample_index_this_query,p_index_this_query)
+
+# outputting reads that failed check of origin to pestis or pseudotb
+with open('blast_failed_reads_with_sample.tsv','w') as f:
+    for s in reads_failed:
+        if len(reads_failed[s])>0:
+            reads_failed_parsed="\t".join(reads_failed[s])
+            f.write(f'{s}\t{reads_failed_parsed}\n')
+
+with open('blast_failed_reads.tsv','w') as f:
+    for s in reads_failed:
+        if len(reads_failed[s])>0:
+            for r in reads_failed[s]:
+                f.write(f'{r}\n')
 
 # finding sample + position indices that have been updated
 samples_indices_to_update=np.where(hasmutation[np.unique(np.where(counts!=counts_copy)[2])])[1]

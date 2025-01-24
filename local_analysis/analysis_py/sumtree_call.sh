@@ -1,0 +1,9 @@
+#! /bin/bash
+
+conda activate py
+
+cd tree_files
+
+python /Users/ad_loris/miniconda3/envs/py/bin/sumtrees.py -t full_tree_alignment_1000bs_ML_all_production_run_fullqc_projected_pileup.raxml.bestTreeCollapsed full_tree_alignment_1000bs_ML_all_production_run_fullqc_projected_pileup.raxml.bootstraps -o sumtree_out_full_tree_alignment_1000bs_ML_all_production_run_fullqc_projected_pileup.raxml.bestTreeCollapsed_support
+
+python /Users/ad_loris/miniconda3/envs/py/bin/sumtrees.py -t full_tree_alignment_1000bs_ML_all_production_run_fullqc.raxml.bestTreeCollapsed full_tree_alignment_1000bs_ML_all_production_run_fullqc.raxml.bootstraps -o sumtree_out_full_tree_alignment_1000bs_ML_all_production_run_fullqc.raxml.bestTreeCollapsed_support

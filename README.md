@@ -8,6 +8,12 @@ Additional questions or comments can be sent to light@mpiib-berlin.mpg.de, or vi
 
 ### Directory Overview
 
+- **processed_data**: This directory contains processed datasets for downstream analysis and validation.
+  - **candidate_mutation_table_processed_gp.pickle.gz**: Analyzed SNP positions, with support matrices across all samples and validated variant positions. To be used with [post QC analysis script](local_analysis/analysis_py/pestis_evolution_LNBA_post_qc_analysis.py).
+  - **candidate_mutation_table.pickle.gz**: Initial set of considered candidate SNP positions prior to quality control. Using the [inital QC script](local_analysis/analysis_py/pestis_evolution_initial_qc.py), this set of matrices is downsampled to validated positions (goodpos) for downstream analysis and saved as **candidate_mutation_table_processed_gp.pickle.gz**.
+  - **vcfs** Directory of "raw" VCF files for validation of variants by readers. Please note: these vcf files are not 1-to-1 of the final set of analyzed SNPs (especially for ancient sampels). Many SNPs are further filtered out in the local_analysis scripts on a sample-by-sample or across sample basis. Please see Methods - High quality variant identification and phylogenetic reconstruction, and [inital QC script](local_analysis/analysis_py/pestis_evolution_initial_qc.py).
+
+
 - **raw_data_processing**: Contains shell scripts and code for processing raw data inputs for downstream analysis.
   - **eager**: Contains nf-core/eager execution code and scripts for eager setup and conversion from eager outputs to snakemake inputs.
     - **screening**: Contains eager execution code for initial data screening, input TSV, and maltextract species ID list.

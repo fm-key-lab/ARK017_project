@@ -257,3 +257,66 @@ NXF_VER=22.10.6 nextflow run nf-core/eager -r 2.4.6 \
     --bwaalnn '0.01' \
     --bwaalnl '16' \
     --bwaalnk '2' 
+
+
+## ## ## RISE 386
+run_location=/ptmp/iclight/eager/mapping/pestis_evolution_production_runs/pestis_mapping_rise386
+mkdir -p ${run_location} && cd ${run_location}
+name_of_run=pestis_evolution_production_run
+nextflow clean -f
+NXF_VER=22.10.6 nextflow run nf-core/eager -r 2.4.6 \
+    -c /u/iclight/eager/mpcdf_raven.config \
+    -profile singularity,mpcdf,raven,resources_normal \
+    -name ${name_of_run} \
+    --input '/u/iclight/eager/pestis_project/ancient_pestis_rise386.tsv' \
+    --fasta '/nexus/posix0/MPIIB-keylab/reference_genomes/Ypestis_ASM906v1/genome.fasta' \
+    --bwa_index '/nexus/posix0/MPIIB-keylab/reference_genomes/Ypestis_ASM906v1/' \
+    --fasta_index '/nexus/posix0/MPIIB-keylab/reference_genomes/Ypestis_ASM906v1/genome.fasta.fai' \
+    --seq_dict '/nexus/posix0/MPIIB-keylab/reference_genomes/Ypestis_ASM906v1/genome.fasta.dict' \
+    --outdir './results' \
+    -w './work' \
+    --complexity_filter_poly_g \
+    --bwaalnn '0.01' \
+    --bwaalnl '16' \
+    --bwaalnk '2' \
+    --run_trim_bam \
+    --bamutils_clip_double_stranded_half_udg_left '2' \
+    --bamutils_clip_double_stranded_half_udg_right '2' \
+    --bamutils_clip_double_stranded_none_udg_left '3' \
+    --bamutils_clip_double_stranded_none_udg_right '3' \
+    --bamutils_clip_single_stranded_half_udg_left '2' \
+    --bamutils_clip_single_stranded_half_udg_right '2' \
+    --bamutils_clip_single_stranded_none_udg_left '3' \
+    --bamutils_clip_single_stranded_none_udg_right '3' 
+
+
+
+## ## ## C90 dog
+run_location=/ptmp/iclight/eager/mapping/pestis_evolution_production_runs/pestis_mapping_c90
+mkdir -p ${run_location} && cd ${run_location}
+name_of_run=pestis_evolution_production_run
+nextflow clean -f
+NXF_VER=22.10.6 nextflow run nf-core/eager -r 2.4.6 \
+    -c /u/iclight/eager/mpcdf_raven.config \
+    -profile singularity,mpcdf,raven,resources_normal \
+    --input '/u/iclight/eager/pestis_project/production_input_files/ancient_pestis_c90.tsv' \
+    --fasta '/nexus/posix0/MPIIB-keylab/reference_genomes/Ypestis_ASM906v1/genome.fasta' \
+    --bwa_index '/nexus/posix0/MPIIB-keylab/reference_genomes/Ypestis_ASM906v1/' \
+    --fasta_index '/nexus/posix0/MPIIB-keylab/reference_genomes/Ypestis_ASM906v1/genome.fasta.fai' \
+    --seq_dict '/nexus/posix0/MPIIB-keylab/reference_genomes/Ypestis_ASM906v1/genome.fasta.dict' \
+    --outdir './results' \
+    -w './work' \
+    --complexity_filter_poly_g \
+    --skip_adapterremoval \
+    --bwaalnn '0.01' \
+    --bwaalnl '16' \
+    --bwaalnk '2' \
+    --run_trim_bam \
+    --bamutils_clip_double_stranded_half_udg_left '2' \
+    --bamutils_clip_double_stranded_half_udg_right '2' \
+    --bamutils_clip_double_stranded_none_udg_left '3' \
+    --bamutils_clip_double_stranded_none_udg_right '3' \
+    --bamutils_clip_single_stranded_half_udg_left '2' \
+    --bamutils_clip_single_stranded_half_udg_right '2' \
+    --bamutils_clip_single_stranded_none_udg_left '3' \
+    --bamutils_clip_single_stranded_none_udg_right '3' 

@@ -12,6 +12,7 @@ from sklearn.decomposition import PCA
 import re
 import scipy.stats as sts
 from statsmodels.stats.multitest import multipletests
+import statsmodels.api as sm
 
 # %% 
 # Functions for data loading and standardization
@@ -29,22 +30,6 @@ def parse_breadth_bed_files(breadth_bed_files):
             collector.append(subset_current_data)
     breadth_concat=pd.concat(collector,axis=1)
     return breadth_concat
-
-def parse_depth_bed_files(depth_bed_files):
-    collector=[]
-    for depth in depth_bed_files:      
-        with gzip.open(depth) as depth_data: # define opening procedure gzip.open or open
-            current_sample_name=depth.split('.depth.gz')[0].split('/')[-1]
-            current_data = pd.read_csv(
-                depth_data,sep='\t',names=['chr','start','end',current_sample_name],
-                dtype={'chr':str,'start':str,'end':str,'depth':float,current_sample_name:float})
-            current_data['chr_start_end']=current_data['chr']+'_'+current_data['start']+'_'+current_data['end']
-            subset_current_data=current_data[['chr_start_end',current_sample_name]].copy()
-            subset_current_data.set_index('chr_start_end',inplace=True)
-            collector.append(subset_current_data)
-    depth_concat=pd.concat(collector,axis=1)
-    return depth_concat
-
 
 def get_chr_start_stop_locus_tag_conversions(gff_path):
     conversion_locus_tag={}
@@ -136,14 +121,10 @@ lnba_metadata=pd.read_csv(lnba_metadata_path,sep='\t')
 
 # load breadth files
 breadth_bed_files=glob.glob('/Users/ad_loris/Documents/key_lab/outputs/pestis_evolution/pangeome/pseudotb_genome_analysis/bed_files/*breadth*')
-depth_bed_files=glob.glob('/Users/ad_loris/Documents/key_lab/outputs/pestis_evolution/pangeome/pseudotb_genome_analysis/bed_files/*depth*')
 
 breadth=parse_breadth_bed_files(breadth_bed_files)
-#depth=parse_depth_bed_files(depth_bed_files)
-#tree_order = np.array(list(tree_order) + [x for x in breadth.columns if x not in tree_order])
 tree_order = ['pestis_probes'] + [x for x in tree_order if x in breadth.columns]
 breadth=breadth[tree_order]
-#depth=depth[tree_order]
 # rename YAC --> IP32953
 breadth=breadth.rename({'YAC': 'IP32953'},axis=1)
 breadth=breadth.rename({'pestis_probes': 'Probeset'},axis=1)
@@ -183,11 +164,6 @@ with open(f'{pangenome_metadata_dir}/gene_presence_absence.csv') as f:
             if 'GCF_000047365' in s:
                 prokka_name_to_gene_name[gene_name]=s
 
-
-"""
-chrom_to_gene_name=pd.read_csv(f'{pangenome_metadata_dir}/header_to_gene_name.txt',sep=' ',header=None)
-chrom_to_gene_name_conversion={str(x):str(y) for x, y in zip(chrom_to_gene_name[0],chrom_to_gene_name[1])}
-"""
 ypestis_genomes=genome_metadata.query('species_taxid == 632')
 ypseudotb_genomes=genome_metadata.query('species_taxid == 633')
 
@@ -205,6 +181,7 @@ present_across_all=gene_presence_absence.index[gene_presence_absence.sum(axis=1)
 # generate present across only ypseudo
 present_ypseudo=gene_presence_absence[ypseudotb_genome_gcf].sum(axis=1)
 present_ypestis=gene_presence_absence[ypestis_genome_gcf].sum(axis=1)
+present_co92=gene_presence_absence['GCF_001293415']==1
 
 core_pseudo=(present_ypseudo>len(ypseudotb_genome_gcf)*core_cutoff)
 pangenome_pseudo=(present_ypseudo>0)
@@ -213,28 +190,42 @@ true_core_pestis=(present_ypestis==len(ypestis_genome_gcf))
 
 true_core_pestis_core_pseudo=(true_core_pestis & true_core_pseudo)
 
-def generate_indices_subset_from_pangenome(pangenome_set,corresponding_line_gff_parsed,index_tag_conversions,prokka_name_to_gene_name):
+def generate_indices_subset_from_pangenome(pangenome_set,corresponding_line_gff_parsed,index_tag_conversions,prokka_name_to_gene_name,additional_fields=False):
     core_genes_prokka_name=[]
     for x in pangenome_set.index[pangenome_set]:
         if x in prokka_name_to_gene_name:
             core_genes_prokka_name.append(prokka_name_to_gene_name[x])
     breadth_indices_to_subset=corresponding_line_gff_parsed.chr_name_start_stop[corresponding_line_gff_parsed.pangenome_id.isin(core_genes_prokka_name)]
     ypseudo_breadth_indices_to_subset=[index_tag_conversions[x] for x in breadth_indices_to_subset if x in index_tag_conversions]
+    if additional_fields:
+        return breadth_indices_to_subset,ypseudo_breadth_indices_to_subset,corresponding_line_gff_parsed[corresponding_line_gff_parsed.pangenome_id.isin(core_genes_prokka_name)]
     return breadth_indices_to_subset,ypseudo_breadth_indices_to_subset
 
-pseudo_core_90,pseudo_core_90_converted_gene_names=generate_indices_subset_from_pangenome(core_pseudo,corresponding_line_gff_parsed,index_tag_conversions,prokka_name_to_gene_name)
+pseudo_core_90,pseudo_core_90_converted_gene_names,pseudo_core_90_genes_supplement=generate_indices_subset_from_pangenome(core_pseudo,corresponding_line_gff_parsed,index_tag_conversions,prokka_name_to_gene_name,True)
 pseudo_core_100,pseudo_core_100_converted_gene_names=generate_indices_subset_from_pangenome(true_core_pseudo,corresponding_line_gff_parsed,index_tag_conversions,prokka_name_to_gene_name)
 
-true_core_pestis_tru_core_pseudo_gene_indices,true_core_pestis_tru_core_pseudo_gene_indices_converted_gene_names=generate_indices_subset_from_pangenome(true_core_pestis_core_pseudo,corresponding_line_gff_parsed,index_tag_conversions,prokka_name_to_gene_name)
+pseudo_core_90_not_in_pestis_true_core,pseudo_core_90_not_in_pestis_true_core_converted_gene_names,pseudo_core_90_not_in_pestis_true_core_genes_supplement=generate_indices_subset_from_pangenome(core_pseudo & ~true_core_pestis,corresponding_line_gff_parsed,index_tag_conversions,prokka_name_to_gene_name,True)
+pseudo_core_90_not_in_pestis_co92,pseudo_core_90_not_in_pestis_co92_converted_gene_names,pseudo_core_90_not_in_pestis_co92_genes_supplement=generate_indices_subset_from_pangenome(core_pseudo & ~(present_co92),corresponding_line_gff_parsed,index_tag_conversions,prokka_name_to_gene_name,True)
 
+true_core_pestis_tru_core_pseudo_gene_indices,true_core_pestis_tru_core_pseudo_gene_indices_converted_gene_names,true_core_genes_supplement=generate_indices_subset_from_pangenome(true_core_pestis_core_pseudo,corresponding_line_gff_parsed,index_tag_conversions,prokka_name_to_gene_name,True)
 
+pseudo_core_90_not_in_pestis_true_core_genes_supplement['pseudo_core_90_not_in_true_core_pestis'] = [True]*len(pseudo_core_90_not_in_pestis_true_core_genes_supplement)
+pseudo_core_90_genes_supplement['pseudo_core_90'] = [True]*len(pseudo_core_90_genes_supplement)
+true_core_genes_supplement['true_core_pseudo_pestis']=[True]*len(true_core_genes_supplement)
 
+# Saving for supplement
+pseudo_core_90_genes_supplement.merge(pseudo_core_90_not_in_pestis_true_core_genes_supplement,how='outer').merge(true_core_genes_supplement,how='outer').fillna(False).to_csv('supplement_pangenome_analysis_sets.tsv',sep='\t',index=False)
+
+# separate files for clarity
+pseudo_core_90_genes_supplement.to_csv('pseudo_core_90_genes_supplement.tsv',sep='\t',index=False)
+pseudo_core_90_not_in_pestis_true_core_genes_supplement.to_csv('pseudo_core_90_not_in_pestis_true_core_genes_supplement.tsv',sep='\t',index=False)
+true_core_genes_supplement.to_csv('true_core_pseudo_pestis_genes_supplement.tsv',sep='\t',index=False)
 # %%
 # Run QC filtering
 #
 
 # Rescale breadth to mean of breadht per sample
-rescaled_breadth = breadth / np.mean(breadth,axis=0) 
+rescaled_breadth = breadth / np.mean(breadth.loc[true_core_pestis_tru_core_pseudo_gene_indices],axis=0) 
 rescaled_breadth[rescaled_breadth>1] = 1
 rescaled_breadth=rescaled_breadth.transpose().iloc[::-1].transpose()
 
@@ -331,23 +322,17 @@ def generate_pca_big_bang_collapsed(subset_breadth,cutoff,title,filename=''):
     plt.legend(loc='lower right',borderaxespad=0.1)
     plt.savefig(f'{pseudotb_analysis_dir}/{filename}.svg',bbox_inches='tight')
 
-generate_pca_big_bang_collapsed(rescaled_breadth[rescaled_breadth.index.isin(pseudo_core_90)],None,'',filename='')
-generate_pca_big_bang_collapsed(rescaled_breadth[rescaled_breadth.index.isin(pseudo_core_90)],None,'',filename='production_pca_ypseudo_core_gene_content_rescaled_breadth')
+generate_pca_big_bang_collapsed(rescaled_breadth[rescaled_breadth.index.isin(pseudo_core_90_not_in_pestis_true_core)],None,'',filename='')
+generate_pca_big_bang_collapsed(rescaled_breadth[rescaled_breadth.index.isin(pseudo_core_90_not_in_pestis_true_core)],None,'',filename='production_pca_ypseudo_core_not_in_pestis_true_core_gene_content_rescaled_breadth')
 
 ######################
 # %% BARPLOT
 # BARPLOT
 # BARPLOT
 # %%
-# additional QC for polarization of samples, analyses sensitive to within-set variability of samples
-# : Remove outliers from matrices
-true_core_breadth_rescaled=rescaled_breadth[rescaled_breadth.index.isin(true_core_pestis_tru_core_pseudo_gene_indices)]
-samples_passing_breadth_outlier_test=true_core_breadth_rescaled.columns[~(np.sum(true_core_breadth_rescaled>0.9) < np.mean(np.sum(true_core_breadth_rescaled>0.9))-np.std(np.sum(true_core_breadth_rescaled>0.9))*2)]
-
-core_genome_outliers_removed_breadth=rescaled_breadth[samples_passing_breadth_outlier_test]
-
-
-def generate_paired_barplot_with_95ci_production(breadth_to_use,cutoff,title,filename=''):
+# # PAIRED BARPLOT SUMMED
+def generate_paired_barplot_with_95ci_production_summed(breadth_to_use,title,filename=''):
+    demoniator=len(breadth_to_use)
     # Assuming you have the following data:
     indices_lnba = np.where(np.isin(breadth_to_use.columns, lnba_sample_names))[0]
     indices_modern = np.where(~np.isin(breadth_to_use.columns, np.concatenate((ancient_samples, np.array(['RV2039','Gok2', 'IP32953','Ypseudo_FDA_ARGOS_665','Probeset'])))))[0]
@@ -355,10 +340,10 @@ def generate_paired_barplot_with_95ci_production(breadth_to_use,cutoff,title,fil
     indices_1st_2nd_pandemic=np.where(np.isin(breadth_to_use.columns,np.setdiff1d(ancient_samples,np.concatenate([lnba_sample_names,['RT5','RT6','I2470', 'RV2039','Gok2']]))))
 
     # Calculate the mean values for each group
-    modern_core_pseudo_mean = np.sum(breadth_to_use[breadth_to_use.columns[indices_modern]] > cutoff)
-    lnba_core_pseudo_mean = np.sum(breadth_to_use[breadth_to_use.columns[indices_lnba]] > cutoff)
-    non_lnba_ancient_core_pseudo_mean =  np.sum(breadth_to_use[breadth_to_use.columns[indices_basal_contemp_lnba]] > cutoff)
-    first_second_core_pseudo_mean= np.sum(breadth_to_use[breadth_to_use.columns[indices_1st_2nd_pandemic]] > cutoff)
+    modern_core_pseudo_mean = np.sum(breadth_to_use[breadth_to_use.columns[indices_modern]] )/demoniator
+    lnba_core_pseudo_mean = np.sum(breadth_to_use[breadth_to_use.columns[indices_lnba]] )/demoniator
+    non_lnba_ancient_core_pseudo_mean =  np.sum(breadth_to_use[breadth_to_use.columns[indices_basal_contemp_lnba]] )/demoniator
+    first_second_core_pseudo_mean= np.sum(breadth_to_use[breadth_to_use.columns[indices_1st_2nd_pandemic]] )/demoniator
 
     # min error,max error
     modern_core_pseudo_mean,modern_core_pseudo_mean_low,modern_core_pseudo_mean_high=mean_confidence_interval(modern_core_pseudo_mean)
@@ -371,13 +356,16 @@ def generate_paired_barplot_with_95ci_production(breadth_to_use,cutoff,title,fil
 
     # run statistics
     # lnba vs modern
-    p_val_lnba_vs_modern=sts.mannwhitneyu(np.sum(breadth_to_use[breadth_to_use.columns[indices_lnba]] > cutoff),np.sum(breadth_to_use[breadth_to_use.columns[indices_modern]]> cutoff))
+    p_val_lnba_vs_modern=sts.mannwhitneyu(np.sum(breadth_to_use[breadth_to_use.columns[indices_lnba]] )/demoniator,np.sum(breadth_to_use[breadth_to_use.columns[indices_modern]])/demoniator)
     print('lnba vs modern',p_val_lnba_vs_modern)
+    # historical vs modern
+    p_val_historical_vs_modern=sts.mannwhitneyu(np.sum(breadth_to_use[breadth_to_use.columns[indices_1st_2nd_pandemic]] )/demoniator,np.sum(breadth_to_use[breadth_to_use.columns[indices_modern]])/demoniator)
+    print('historical vs modern',p_val_historical_vs_modern)
     # lnba vs early
-    p_val_lnba_vs_early=sts.mannwhitneyu(np.sum(breadth_to_use[breadth_to_use.columns[indices_lnba]] > cutoff),np.sum(breadth_to_use[breadth_to_use.columns[indices_basal_contemp_lnba]] > cutoff))
+    p_val_lnba_vs_early=sts.mannwhitneyu(np.sum(breadth_to_use[breadth_to_use.columns[indices_lnba]] )/demoniator,np.sum(breadth_to_use[breadth_to_use.columns[indices_basal_contemp_lnba]] )/demoniator)
     print('lnba vs early',p_val_lnba_vs_early)
     # lnba vs late
-    p_val_lnba_vs_late=sts.mannwhitneyu(np.sum(breadth_to_use[breadth_to_use.columns[indices_lnba]] > cutoff),np.sum(breadth_to_use[breadth_to_use.columns[indices_1st_2nd_pandemic]] > cutoff))
+    p_val_lnba_vs_late=sts.mannwhitneyu(np.sum(breadth_to_use[breadth_to_use.columns[indices_lnba]] )/demoniator,np.sum(breadth_to_use[breadth_to_use.columns[indices_1st_2nd_pandemic]] )/demoniator)
     print('lnba vs late',p_val_lnba_vs_late)
 
     # Set the x positions for the bars
@@ -424,32 +412,199 @@ def generate_paired_barplot_with_95ci_production(breadth_to_use,cutoff,title,fil
     bounds=upper_bounds-lower_bounds-.01*lower_bounds
     print(bounds)
     x1,x2,x3,x4=0,1,2,3
-    y=lower_bounds+bounds*1.75
-    h=bounds*.1
+    y=lower_bounds+bounds*1.02
+    h=bounds*.05
     ax.plot([x1, x1, x2, x2], [y, y+h, y+h, y], lw=1.25, c='black')
     ax.text((x1+x2)*0.5,y+h, f'{p_val_a_to_b}', ha='center', va='bottom', color='black')
     ax.plot([ x2, x2, x3,x3], [y+bounds*.2, y+bounds*.2+h, y+bounds*.2+h, y+bounds*.2], lw=1.25, c='black')
     ax.text((x3+x2)*0.5,y+bounds*.2+h, f'{p_val_b_to_c}', ha='center', va='bottom', color='black')
-    ax.plot([x2, x2, x4,x4], [y+bounds*.45, y+bounds*.45+h, y+bounds*.45+h, y+bounds*.45], lw=1.25, c='black')
-    ax.text((x4+x2)*0.5,y+bounds*.45+h, f'{p_val_b_to_d}', ha='center', va='bottom', color='black')
+    ax.plot([x2, x2, x4,x4], [y+bounds*.32, y+bounds*.32+h, y+bounds*.32+h, y+bounds*.32], lw=1.25, c='black')
+    ax.text((x4+x2)*0.5,y+bounds*.32+h, f'{p_val_b_to_d}', ha='center', va='bottom', color='black')
 
 
 
     # Add labels, title, and legend
     ax.set_xlabel('')
     plt.rcParams["text.usetex"] = True
-    ax.set_ylabel('$\it{Y. pseudotuberculosis}$\ncore genes retained in $\it{Y. pestis}$')
+    ax.set_ylabel('Normalized, summed breadth % of\n $\it{Y. pseudotuberculosis}$ core genes')
     plt.rcParams["text.usetex"] = False
     ax.set_title(title)
     ax.set_xticks(x)
     ax.set_xticklabels(labels)
-    ax.set_ylim(max(0,abs(lower_bounds-10)),upper_bounds+50)
+    ax.set_ylim(max(0,abs(lower_bounds))-0.01,1.02)
+    ax.set_yticks([0.9,0.92,0.94,0.96,0.98,1])
+    ax.set_yticklabels(['90','92','94','96','98','100'])
     # Display the plot
     if len(filename)>0:
         plt.savefig(f'{filename}.svg',bbox_inches='tight')
     else:
         plt.show()
-generate_paired_barplot_with_95ci_production(core_genome_outliers_removed_breadth[core_genome_outliers_removed_breadth.index.isin(pseudo_core_90)],0.9,'',filename='production_barplot_ypseudo_core_gene_cutoff90_modern_lnba_early_late')
+generate_paired_barplot_with_95ci_production_summed(rescaled_breadth[rescaled_breadth.index.isin(pseudo_core_90_not_in_pestis_true_core)],'',filename='')
+
+generate_paired_barplot_with_95ci_production_summed(rescaled_breadth[rescaled_breadth.index.isin(pseudo_core_90_not_in_pestis_true_core)],'',filename='production_barplot_ypseudo_core_gene_summed_not_in_pestis_truecore_modern_lnba_early_late')
+
+# %%
+# correlation between age and estimated ypseudo gene content
+indices_lnba = np.where(np.isin(rescaled_breadth.columns, lnba_sample_names))[0]
+rescaled_breadth_lnba=rescaled_breadth[rescaled_breadth.columns[indices_lnba]][rescaled_breadth.index.isin(pseudo_core_90_not_in_pestis_true_core)]
+
+date=[]
+sum_breadth=[]
+samples_included=[]
+
+date_ark=[]
+sum_breadth_ark=[]
+for x,y in zip(rescaled_breadth_lnba.columns,np.sum(rescaled_breadth_lnba)):
+    query_result=lnba_metadata.query(f'Sample_Name == "{x}"')
+    if len(query_result)>0:
+        if query_result.median_bce_date_calibrated.iloc[0]:
+            date.append(query_result.median_bce_date_calibrated.iloc[0])
+            sum_breadth.append(y/len(rescaled_breadth_lnba))
+            samples_included.append(x)
+            if x=='ARK017':
+                date_ark.append(query_result.median_bce_date_calibrated.iloc[0])
+                sum_breadth_ark.append(y/len(rescaled_breadth_lnba))
+
+X,y=np.array(date).reshape(-1, 1) ,np.array(sum_breadth).reshape(-1, 1) 
+
+X2 = sm.add_constant(X)
+est = sm.OLS(y, X2)
+est2 = est.fit()
+print(est2.summary())
+
+intercept,slope=est2.params
+
+intercept_ark,slope_ark=est2.params
+
+def calculate_se_slope(X,y,residuals,return_value=False):
+    # Sum of squared residuals
+    SSR = np.sum(residuals**2)
+
+    # Number of observations and features
+    n = len(y)
+    k = X.shape[1]
+
+    # Mean of X
+    mean_X = np.mean(X)
+
+    # Sum of the squared differences between X and its mean
+    sum_sq_diff = np.sum((X - mean_X)**2)
+
+    # Standard error of the coefficient
+    SE_beta = np.sqrt(SSR / (n - 2) / sum_sq_diff)
+    if return_value:
+        return SE_beta
+    print("Standard Error of the Coefficient:", SE_beta)
+
+residuals = np.array(sum_breadth)- (np.array(date)*slope)+intercept
+std_dev_residuals =  sts.tstd(residuals)
+std_err_reg_coef=calculate_se_slope(np.array(date).reshape(-1, 1),np.array(sum_breadth).reshape(-1, 1) ,residuals, return_value=True)
+
+date_ticks=np.array([-3000,-2500,-2000,-1500,-1000,-500])
+
+indices_lnba = np.where(np.isin(rescaled_breadth.columns, lnba_sample_names))[0]
+rescaled_breadth_lnba=rescaled_breadth[rescaled_breadth.columns[indices_lnba]][rescaled_breadth.index.isin(pseudo_core_90_not_in_pestis_true_core)]
+
+date=[]
+sum_breadth=[]
+samples_included=[]
+
+date_ark=[]
+sum_breadth_ark=[]
+for x,y in zip(rescaled_breadth_lnba.columns,np.sum(rescaled_breadth_lnba)):
+    query_result=lnba_metadata.query(f'Sample_Name == "{x}"')
+    if len(query_result)>0:
+        if query_result.median_bce_date_calibrated.iloc[0]:
+            date.append(query_result.median_bce_date_calibrated.iloc[0])
+            sum_breadth.append(y/len(rescaled_breadth_lnba))
+            samples_included.append(x)
+            if x=='ARK017':
+                date_ark.append(query_result.median_bce_date_calibrated.iloc[0])
+                sum_breadth_ark.append(y/len(rescaled_breadth_lnba))
+
+X,y=np.array(date).reshape(-1, 1) ,np.array(sum_breadth).reshape(-1, 1) 
+
+X2 = sm.add_constant(X)
+est = sm.OLS(y, X2)
+est2 = est.fit()
+print(est2.summary())
+
+intercept,slope=est2.params
+
+intercept_ark,slope_ark=est2.params
+
+def calculate_se_slope(X,y,residuals,return_value=False):
+    # Sum of squared residuals
+    SSR = np.sum(residuals**2)
+
+    # Number of observations and features
+    n = len(y)
+    k = X.shape[1]
+
+    # Mean of X
+    mean_X = np.mean(X)
+
+    # Sum of the squared differences between X and its mean
+    sum_sq_diff = np.sum((X - mean_X)**2)
+
+    # Standard error of the coefficient
+    SE_beta = np.sqrt(SSR / (n - 2) / sum_sq_diff)
+    if return_value:
+        return SE_beta
+    print("Standard Error of the Coefficient:", SE_beta)
+
+residuals = np.array(sum_breadth)- (np.array(date)*slope)+intercept
+std_dev_residuals =  sts.tstd(residuals)
+std_err_reg_coef=calculate_se_slope(np.array(date).reshape(-1, 1),np.array(sum_breadth).reshape(-1, 1) ,residuals, return_value=True)
+
+date_ticks=np.array([-3000,-2500,-2000,-1500,-1000,-500])
+
+fig,ax = plt.subplots(facecolor='white',)
+ax.plot([np.min(date_ticks),np.max(date_ticks)],[np.min(date_ticks)*slope+intercept,np.max(date_ticks)*slope+intercept],color='gray',zorder=0)
+ax.fill_between([np.min(date_ticks),np.max(date_ticks)],np.array(([np.min(date_ticks)*slope+intercept,np.max(date_ticks)*slope+intercept])+2*std_dev_residuals),np.array(([np.min(date_ticks)*slope+intercept,np.max(date_ticks)*slope+intercept])-2*std_dev_residuals),alpha=0.1,color='gray')
+ax.fill_between([np.min(date_ticks),np.max(date_ticks)],np.array(([np.min(date_ticks)*slope+intercept,np.max(date_ticks)*slope+intercept])+3*std_dev_residuals),np.array(([np.min(date_ticks)*slope+intercept,np.max(date_ticks)*slope+intercept])-3*std_dev_residuals),alpha=0.1,color='gray')
+ax.scatter(zorder=2,x=date,y=sum_breadth,color='#2b8cbe',alpha=0.75,label='Human LNBA lineage $\it{Y. pestis}$')
+ax.scatter(zorder=2,x=date_ark,y=sum_breadth_ark,color='#c90076',marker='D',alpha=0.75,label='Sheep LNBA lineage $\it{Y. pestis}$ (ARK017)')
+plt.legend(loc='lower left',fontsize='small')
+
+plt.xlabel('Cal. BCE date')
+ax.set_xticks(date_ticks)
+ax.set_xticklabels([str(x*-1) for x in date_ticks])
+ax.set_yticks([.92,.94,.96,.98,1])
+ax.set_yticklabels(['92','94','96','98','100'])
+plt.xlim(np.min(date_ticks),np.max(date_ticks))
+ax.set_ylabel('Normalized, summed breadth % of\n $\it{Y. pseudotuberculosis}$ core genes')
+
+plt.savefig(f'{pseudotb_analysis_dir}/date_to_estimated_retention_regression_with_ark_non_pseudo_core_non_pestis_true_core.svg',bbox_inches='tight')
+
+# %%
+# for revision:  impact on R2 of removing youngest samples
+indices_lnba = np.where(np.isin(rescaled_breadth.columns, lnba_sample_names))[0]
+rescaled_breadth_lnba=rescaled_breadth[rescaled_breadth.columns[indices_lnba]][rescaled_breadth.index.isin(pseudo_core_90_not_in_pestis_true_core)]
+
+date=[]
+sum_breadth=[]
+samples_included=[]
+
+date_ark=[]
+sum_breadth_ark=[]
+for x,y in zip(rescaled_breadth_lnba.columns,np.sum(rescaled_breadth_lnba)):
+    query_result=lnba_metadata.query(f'Sample_Name == "{x}"')
+    if len(query_result)>0:
+        if query_result.median_bce_date_calibrated.iloc[0] < -1000:
+            date.append(query_result.median_bce_date_calibrated.iloc[0])
+            sum_breadth.append(y)
+            samples_included.append(x)
+            if x=='ARK017':
+                date_ark.append(query_result.median_bce_date_calibrated.iloc[0])
+                sum_breadth_ark.append(y)
+
+X,y=np.array(date).reshape(-1, 1) ,np.array(sum_breadth).reshape(-1, 1) 
+
+X2 = sm.add_constant(X)
+est = sm.OLS(y, X2)
+est2 = est.fit()
+print(est2.summary())
 
 
 ######################
@@ -464,17 +619,16 @@ ypseudo_genes_breadth_old_tag_names_with_extension=rescaled_breadth.rename(index
 # getting subsets of samples for IDing genes fitting patterns of interest
 ypseudo_genes_breadth=rescaled_breadth.rename(index=index_tag_conversions)
 indices_lnba = np.where(np.isin(ypseudo_genes_breadth.columns, lnba_sample_names))[0]
-indices_post_lnba = np.where(~np.isin(ypseudo_genes_breadth.columns, np.concatenate((lnba_sample_names, np.array(['RV2039','Gok2','Probeset', 'IP32953','Ypseudo_FDA_ARGOS_665'])))))[0]
-
+indices_branches_0_1_2_3_4=np.where(np.isin(rescaled_breadth.columns,np.array(list(filter(re.compile(r'^[0-4]{1}\.').search, list(rescaled_breadth.columns))))))[0]
 
 indices_lnba_and_pre= np.where(np.isin(rescaled_breadth.columns, list(lnba_sample_names)+['RV2039','Gok2']))[0]
 
-genes_present_few_lnba_few_present_non=(np.sum(rescaled_breadth[rescaled_breadth.columns[indices_lnba_and_pre]]>0.99,axis=1) > 0) & (np.sum(rescaled_breadth[rescaled_breadth.columns[indices_post_lnba]]<0.9,axis=1) > len(indices_post_lnba)*0.75)
+genes_present_few_lnba_few_present_non=(np.sum(rescaled_breadth[rescaled_breadth.columns[indices_lnba_and_pre]]>0.99,axis=1) > 0) & (np.sum(rescaled_breadth[rescaled_breadth.columns[indices_branches_0_1_2_3_4]]<0.9,axis=1) > len(indices_branches_0_1_2_3_4)*0.75)
 
 not_in_core=[]
 in_core=[]
 for region in genes_present_few_lnba_few_present_non[genes_present_few_lnba_few_present_non].index:
-    if region not in list(pseudo_core_90):
+    if region not in list(pseudo_core_90_not_in_pestis_true_core):
         not_in_core.append(region)
     else: 
         in_core.append(region)
@@ -483,12 +637,14 @@ heatmap_genes_present_few_lnba_few_present_non=rescaled_breadth.loc[rescaled_bre
 heatmap_concatenated_collapsed_breadth=generate_collapsed_heatmap_data(heatmap_genes_present_few_lnba_few_present_non,include_probes=False)
 
 
-fig, ax = plt.subplots(facecolor='white', figsize=(10, 10))
-cbar_ax = sns.heatmap(heatmap_concatenated_collapsed_breadth.transpose(), cmap=sns.dark_palette((10, 60, 100), input="husl", as_cmap=True), linewidths=1, linecolor='lightgray', clip_on=False, ax=ax, cbar=True)
+fig, ax = plt.subplots(facecolor='white', figsize=(14, 10))
+cbar_ax = sns.heatmap(heatmap_concatenated_collapsed_breadth.transpose()[::-1].transpose(), cmap=sns.dark_palette((10, 60, 100), input="husl", as_cmap=True), linewidths=1, linecolor='lightgray', clip_on=False, ax=ax, cbar=True)
 #plt.title('Pseudotuberculosis gene differentiation between LNBA and modern lineages',fontsize=25)
+ax.xaxis.tick_top()
 plt.xlabel('')
-plt.xticks(rotation=90,fontsize=15)
-plt.yticks(fontsize=12)
+plt.ylabel('')
+plt.xticks(rotation=90,fontsize=12)
+plt.yticks(fontsize=15)
 
 # Adjust the color bar size
 cbar = ax.collections[0].colorbar
@@ -510,18 +666,18 @@ cbar.ax.spines['right'].set_linewidth(1)
 cbar.ax.spines['bottom'].set_linewidth(1)
 cbar.ax.spines['left'].set_linewidth(1)
 
-plt.savefig(f'{pseudotb_analysis_dir}/heatmap_present_lnba_pre_collapsed_production.svg',bbox_inches='tight')
+plt.savefig(f'{pseudotb_analysis_dir}/heatmap_present_lnba_pre_collapsed_production_ypseudo_core_not_in_pestis_true_core.svg',bbox_inches='tight')
 
 
 # uncollapsed 
 indices_lnba_and_pre= np.where(np.isin(rescaled_breadth.columns, list(lnba_sample_names)+['RV2039','Gok2']))[0]
 
-genes_present_few_lnba_few_present_non=(np.sum(rescaled_breadth[rescaled_breadth.columns[indices_lnba_and_pre]]>0.99,axis=1) > 0) & (np.sum(rescaled_breadth[rescaled_breadth.columns[indices_post_lnba]]<0.9,axis=1) > len(indices_post_lnba)*0.75)
+genes_present_few_lnba_few_present_non=(np.sum(rescaled_breadth[rescaled_breadth.columns[indices_lnba_and_pre]]>0.99,axis=1) > 0) & (np.sum(rescaled_breadth[rescaled_breadth.columns[indices_branches_0_1_2_3_4]]<0.9,axis=1) > len(indices_branches_0_1_2_3_4)*0.75)
 
 not_in_core=[]
 in_core=[]
 for region in genes_present_few_lnba_few_present_non[genes_present_few_lnba_few_present_non].index:
-    if region not in list(pseudo_core_90):
+    if region not in list(pseudo_core_90_not_in_pestis_true_core):
         not_in_core.append(region)
     else: 
         in_core.append(region)
@@ -558,7 +714,7 @@ cbar.ax.spines['left'].set_linewidth(1)
 plt.savefig(f'{pseudotb_analysis_dir}/heatmap_present_lnba_pre_production.svg',bbox_inches='tight')
 
 # also just outputting as a tsv
-heatmap_genes_present_few_lnba_few_present_non.to_csv(f'{pseudotb_analysis_dir}/normalized_breadth_present_lnba_pre_production.tsv',sep='\t')
+heatmap_genes_present_few_lnba_few_present_non.to_csv(f'{pseudotb_analysis_dir}/normalized_breadth_present_lnba_ypseudo_core_not_in_pestis_true_core.tsv',sep='\t')
 
 # 
 # califf regions
@@ -629,28 +785,7 @@ cbar.ax.spines['left'].set_linewidth(1)
 
 plt.savefig(f'{pseudotb_analysis_dir}/heatmap_califf_branches_uncollapsed_production.svg',bbox_inches='tight')
 #########################
-# %%
-# checking correlation between age and estimated gene content
-indices_lnba = np.where(np.isin(core_genome_outliers_removed_breadth.columns, lnba_sample_names))[0]
-rescaled_breadth_lnba=core_genome_outliers_removed_breadth[core_genome_outliers_removed_breadth.columns[indices_lnba]][core_genome_outliers_removed_breadth.index.isin(pseudo_core_90)]
 
-date=[]
-sum_breadth=[]
-samples_included=[]
-for x,y in zip(rescaled_breadth_lnba.columns,np.sum(rescaled_breadth_lnba)):
-    query_result=lnba_metadata.query(f'Sample_Name == "{x}"')
-    if len(query_result)>0:
-        date.append(query_result.median_bce_date_calibrated.iloc[0])
-        sum_breadth.append(y)
-        samples_included.append(x)
-import statsmodels.api as sm
-
-X,y=np.array(sum_breadth).reshape(-1, 1) ,np.array(date).reshape(-1, 1) 
-
-X2 = sm.add_constant(X)
-est = sm.OLS(y, X2)
-est2 = est.fit()
-print(est2.summary())
 
 #########################
 #
@@ -714,15 +849,12 @@ conversion_file_virulence='/Users/ad_loris/Documents/key_lab/outputs/pestis_evol
 virulence_name_conversion=get_chr_start_end_conversion_virulence(conversion_file_virulence)
 # load breadth files
 breadth_bed_files=glob.glob('/Users/ad_loris/Documents/key_lab/outputs/pestis_evolution/pangeome/pestis_virulence_analysis/bed_files/*breadth*')
-depth_bed_files=glob.glob('/Users/ad_loris/Documents/key_lab/outputs/pestis_evolution/pangeome/pestis_virulence_analysis/bed_files/*depth*')
 
 breadth=parse_breadth_bed_files(breadth_bed_files)
-depth=parse_depth_bed_files(depth_bed_files)
 tree_order=np.loadtxt('/Users/ad_loris/Documents/key_lab/outputs/pestis_evolution/production_run/tree_order.txt', dtype=str)
 
 tree_order = ['pestis_probes'] + [x for x in tree_order if x in breadth.columns]
 breadth=breadth[tree_order]
-depth=depth[tree_order]
 # rename YAC --> IP32953
 breadth=breadth.rename({'YAC': 'IP32953'},axis=1)
 breadth=breadth.rename({'pestis_probes': 'Probeset'},axis=1)
@@ -732,7 +864,6 @@ breadth=breadth.rename({'pestis_probes': 'Probeset'},axis=1)
 rescaled_breadth = breadth / np.mean(breadth,axis=0) 
 rescaled_breadth[rescaled_breadth>1] = 1
 # %%
-
 heatmap_data=generate_collapsed_heatmap_data(rescaled_breadth.rename(index=virulence_name_conversion),False)
 fig, ax = plt.subplots(facecolor='white', figsize=(40, 10))
 cbar_ax = sns.heatmap(heatmap_data.transpose(), cmap=sns.dark_palette((10, 60, 100), input="husl", as_cmap=True), linewidths=1, linecolor='lightgray', clip_on=False, ax=ax, cbar=True)

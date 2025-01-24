@@ -1740,6 +1740,15 @@ def cacluate_expected_dn_ds_per_gene(params_dict,annotation_genes):
         locustag_based_nonsyn_prob[genelocustag]=probnonsyn
     return locustag_based_nonsyn_prob # Prob for N occuring 
 
+def get_pairwise_genetic_distance(sample1,sample2,calls,sampleNames):
+    """Calculates pairwise genetic distance, normalized to the number of comparisons possible"""
+    col_index_to_compare=np.nonzero(np.in1d(sampleNames, sample1))[0]
+    row_index_to_compare=np.nonzero(np.in1d(sampleNames, sample2))[0]
+    calls_same_for_comparissons=np.sum(((calls[:,col_index_to_compare] == calls[:,row_index_to_compare]) & (calls[:,col_index_to_compare] != 4) & (calls[:,row_index_to_compare] != 4)))
+    denominator_for_comparissons=np.sum(((calls[:,col_index_to_compare] !=4 ) & (calls[:,row_index_to_compare] != 4)))
+    normalized_genetic_distance=(denominator_for_comparissons-calls_same_for_comparissons)/denominator_for_comparissons
+    return normalized_genetic_distance
+
 ###################################################################################################
 ## # # # # # # # # # # # # # All phylogenetic-related analyses # # # # # # # # # # # # # # # # # ##
 ###################################################################################################
