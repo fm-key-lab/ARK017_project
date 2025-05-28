@@ -246,6 +246,31 @@ plt.xticks([])
 plt.ylabel('')
 plt.savefig('rise386_pairwise_non_lnba.svg')
 
+
+# %%
+# ARK017 pairwise comparisons
+# within LNBA
+pairwise_dists=[]
+pairwise_dists_comp_sample=[]
+pairwise_comps=[]
+
+lnba_order_with_rise=lnba_order[:lnba_order.index('ARK017')]+['RISE386']+lnba_order[lnba_order.index('ARK017'):]
+for s in lnba_order_with_rise:
+    if s != 'ARK017':
+        pairwise_dist_this_comp,pairwise_comps_this_comp=get_pairwise_genetic_distance(s,'ARK017',calls_projection,sampleNames_projection)
+        pairwise_dists.append(pairwise_dist_this_comp)
+        pairwise_comps.append(pairwise_comps_this_comp)
+        pairwise_dists_comp_sample.append(s)
+pairwise_comparisons_ark017_in_lnba=pd.DataFrame({'sample':pairwise_dists_comp_sample,'num_comparisons':pairwise_comps,'pairwise_dist':pairwise_dists,'sample_comps':[f'{x}, {y}' for x,y in zip(pairwise_dists_comp_sample,pairwise_comps)]})
+
+log_data = np.log10(pairwise_comparisons_ark017_in_lnba[['sample_comps','pairwise_dist']].set_index('sample_comps')) # Use np.log1p to handle zero values
+
+plt.subplots(facecolor='white',figsize=(1,20))
+sns.heatmap(log_data,cmap='Blues',cbar_kws={'label': '$Log_{10}$ Pairwise Genetic Distance'})
+plt.xticks([])
+plt.ylabel('')
+plt.savefig('ark017_pairwise_lnba.svg')
+
 # %%
 # C90
 not_lnba_order=[x for x in tree_sample_order if x not in lnba_sample_names and x in sampleNames]

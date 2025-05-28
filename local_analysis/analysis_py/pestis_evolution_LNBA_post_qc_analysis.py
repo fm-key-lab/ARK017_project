@@ -325,7 +325,7 @@ print('Total identified from reanalysis of only Cui Samples:', len(cui_samples_m
 
 # Identify SNPs driven by inclusion of new samples by finding where no mutation is ID'd when analyzing all other samples
 
-ex_kishlinchkina=np.where(hasmutation[:,~(non_cui_samples_modern_samples)].sum(axis=1)==0)[0]
+ex_kishlinchkina=np.where(hasmutation[:,~(non_cui_samples_modern_indexes)].sum(axis=1)==0)[0]
 print('Total identified from inclusion of Kislichkina:', len(ex_kishlinchkina))
 ex_non_lnba_ancient=np.where(hasmutation[:,~(ancient_sample_bool & ~LNBA_clade_indices)].sum(axis=1)==0)[0]
 print('Total SNPs identified from inclusion of additional non LNBA ancient genomes:', len(ex_non_lnba_ancient))
@@ -1063,6 +1063,43 @@ plt.ylabel('dN/dS Ratio')
 
 plt.savefig(f'pdf/dnds/{analysis_params_output_name}/production_dnds_lnba_vs_extant.svg',bbox_inches="tight")
 
+# %% dN/dS across distinct clades of modern data
+clade_dnds=[]
+clade_labels=[]
+for clade in ['0.PE7','0.PE2', '0.PE4', '0.PE5', '0.ANT1', '0.ANT2', '0.ANT3', 
+       '1.IN1', '1.IN2', '1.IN3', '1.ORI1', '1.ORI2', '1.ORI3', '2.ANT1',
+       '2.ANT2', '2.ANT3', '2.MED1', '2.MED2', '2.MED3', '3.ANT1',
+       '3.ANT2', '4.ANT1']:
+    test=list(filter(re.compile(clade).search,sampleNames))
+    clade_mutations = np.where(np.sum(hasmutation_relative_ancestral_MRCA_LNBA_modern_pestis[:,:][:,np.isin(sampleNames,test)],axis=1)>0)[0]
+    clade_dnds.append(apyp.annotate_mutations(annotation_genes , p[clade_mutations] , refnti_m[np.ix_(clade_mutations,np.full((num_samples), True))] , ancestral_reconstruction_nti_m[np.ix_(clade_mutations,np.full((num_samples), True))] , calls[np.ix_(clade_mutations,np.full((num_samples), True))] , counts[np.ix_(np.full((num_samples), True),np.full((8), True),clade_mutations)] , hasmutation_relative_ancestral_MRCA_LNBA_modern_pestis[np.ix_(clade_mutations,np.full((num_samples), True))], mutQual[clade_mutations,].flatten() , promotersize , ref_genome_folder) )# extract relevant annotation info for each SNP    
+    clade_labels.append(clade)
+
+dn_ds_all_sets=generate_dn_ds_stats_across_sets(clade_labels,clade_dnds,f"{analysis_params_output_name}_mutationalspectrum.py.pk1",annotation_genes)
+data_observed_df,estimate_df=parse_data_dict(data_collector=dn_ds_all_sets,dn_ds=True)
+df=pd.DataFrame.from_dict(data_observed_df,orient='index',columns=clade_labels)
+
+
+fig,axs=plt.subplots(facecolor='white')
+plt.axhline(y = 1, color = 'black', linestyle = (0, (5, 2.5)),linewidth=2,alpha=0.55)
+axs.set_xlim(0,22.25)
+axs.set_ylim(0.5,1.8)
+
+#sns.pointplot(y=df.loc['value'],x=group_collector_final,join=False,markers='D')
+tick_locs=[]
+for index,clade in enumerate(df.columns):
+    clade_low=df.loc['low'][clade]
+    clade_high=df.loc['high'][clade]
+    clade_value=df.loc['value'][clade]
+    x_index=index+0.5
+    central_location_clade_error_bar=(x_index-.25,df.loc['value'][clade]-0.5*(clade_high-clade_low))
+    axs.add_patch(Rectangle(central_location_clade_error_bar, 0.5, (clade_high-clade_low),alpha=0.75,color='#d0d1e6'))
+    plt.scatter(x=x_index,y=clade_value,marker='_',c='black',linewidths=2.5)
+    tick_locs.append(x_index)
+
+axs.set_xticks(tick_locs,list(df.columns),rotation=90)
+plt.ylabel('dN/dS Ratio')
+plt.savefig(f'pdf/dnds/{analysis_params_output_name}/production_dnds_extant_sublineages.svg',bbox_inches="tight")
 
 # %% 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
