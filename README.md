@@ -51,7 +51,7 @@ The analysis done can be roughly organized into 4 sections: Screening, SNV-based
 8) Run local analysis initial QC script for filtering mutations and basecalls [pestis_evolution_initial_qc.py](local_analysis/analysis_py/pestis_evolution_initial_qc.py)
    1) Run blast+ on identified ancient singletons [blast_execution_ancient_singletons.sh](local_analysis/analysis_py/blast_execution_ancient_singletons.sh) (line 514 break-point)
    2) Continue filtering
-9) Run main analysis script
+9) Run main [analysis script](local_analysis/analysis_py/pestis_evolution_LNBA_post_qc_analysis.py)
 
 ## PART 3: *Y. pseudotuberculosis* GENE CONTENT
 ### Basic overview of execution
