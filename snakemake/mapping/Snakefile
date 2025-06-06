@@ -9,7 +9,7 @@ SCRIPTS_DIRECTORY = "./scripts"
 sys.path.insert(0, SCRIPTS_DIRECTORY)
 
 # from import read_samplesCSV # not needed since this function is in the next file
-from mapping_modules import *
+from read_move_link_samplesCSV import *
 
 ## Define couple of lists from samples.csv
 ## Format: Path,Sample,ReferenceGenome,ProviderName,Subject
